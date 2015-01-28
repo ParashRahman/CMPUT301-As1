@@ -1,0 +1,5 @@
+https://www.gbta.org/Lists/Resource%20Library/ISOCurrencyCodes081507.xls 
+
+January 17, 2015
+
+The currency.txt file will be used to autocomplete for the user as they enter the currency type.

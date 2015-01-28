@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ExpenseChecker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+   	<!-- AddExpense -->
+	<string name="promptTitle"> Title: </string>
+	<string name="hintTitle"> title </string>
+	<string name="promptDate"> Date: </string>
+	<string name="hintDD"> DD </string>
+	<string name="hintMM"> MM </string>
+	<string name="hintYYYY"> YYYY </string>
+	<string name="slash"> / </string>
+	<string name="to"> to </string>
+	<string name="promptRange"> Range? </string>
+	<string name="promptCost"> Cost: </string>
+	<string name="hintCost"> cost </string>
+	<string name="promptCurrency"> Currency: </string>
+	<string name="hintCurrency"> CUR </string>
+	
+	<!-- Action Menu -->
+	<string name="action_edit"> Edit </string>
+	<string name="action_delete"> Delete </string>
+	
+</resources>
