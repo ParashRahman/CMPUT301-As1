@@ -334,6 +334,8 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
 int drawable ic_launcher 0x7f020033
+int drawable pencil 0x7f020034
+int drawable trashcan 0x7f020035
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f090030
@@ -342,7 +344,6 @@ int id action_bar_spinner 0x7f090002
 int id action_bar_subtitle 0x7f09001f
 int id action_bar_title 0x7f09001e
 int id action_context_bar 0x7f090032
-int id action_edit 0x7f090048
 int id action_menu_divider 0x7f090005
 int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f09002e
