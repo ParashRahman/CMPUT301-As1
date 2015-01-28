@@ -1655,6 +1655,7 @@ containing a value of this type.
         public static int beginning=0x7f09001b;
         public static int checkbox=0x7f090029;
         public static int collapseActionView=0x7f090015;
+        public static int date=0x7f090041;
         public static int decor_content_parent=0x7f09002f;
         public static int default_activity_button=0x7f090024;
         public static int dialog=0x7f090019;
@@ -1686,7 +1687,6 @@ containing a value of this type.
         public static int range4=0x7f090045;
         public static int range5=0x7f090046;
         public static int range6=0x7f090047;
-        public static int ranged_date=0x7f090041;
         public static int search_badge=0x7f090035;
         public static int search_bar=0x7f090034;
         public static int search_button=0x7f090036;
