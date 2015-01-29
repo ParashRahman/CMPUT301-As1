@@ -352,9 +352,9 @@ int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
 int id activity_chooser_view_content 0x7f090021
 int id always 0x7f090014
-int id b_deleteClaim 0x7f090048
-int id b_editClaim 0x7f090049
-int id b_viewClaim 0x7f09004a
+int id b_deleteClaim 0x7f090049
+int id b_editClaim 0x7f09004a
+int id b_viewClaim 0x7f09004b
 int id beginning 0x7f09001b
 int id checkbox 0x7f090029
 int id collapseActionView 0x7f090015
@@ -408,6 +408,7 @@ int id split_action_bar 0x7f090004
 int id submit_area 0x7f09003c
 int id tabMode 0x7f09000c
 int id title 0x7f090027
+int id tv_claimsList 0x7f090048
 int id up 0x7f090001
 int id useLogo 0x7f090013
 int id withText 0x7f090018

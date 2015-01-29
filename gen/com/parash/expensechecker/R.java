@@ -1653,9 +1653,9 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f090020;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
-        public static final int b_deleteClaim=0x7f090048;
-        public static final int b_editClaim=0x7f090049;
-        public static final int b_viewClaim=0x7f09004a;
+        public static final int b_deleteClaim=0x7f090049;
+        public static final int b_editClaim=0x7f09004a;
+        public static final int b_viewClaim=0x7f09004b;
         public static final int beginning=0x7f09001b;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
@@ -1709,6 +1709,7 @@ containing a value of this type.
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
         public static final int title=0x7f090027;
+        public static final int tv_claimsList=0x7f090048;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f090018;

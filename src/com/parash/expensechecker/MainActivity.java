@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         listOfClaims = loadFromFile();
-		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, listOfClaims);
+		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
 		lv_claims.setAdapter(adapter);
     }
     
