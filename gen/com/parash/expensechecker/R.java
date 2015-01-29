@@ -1632,9 +1632,10 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int ic_launcher=0x7f020033;
-        public static final int pencil=0x7f020034;
-        public static final int trashcan=0x7f020035;
+        public static final int eye=0x7f020033;
+        public static final int ic_launcher=0x7f020034;
+        public static final int pencil=0x7f020035;
+        public static final int trash=0x7f020036;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;
@@ -1652,6 +1653,9 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f090020;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
+        public static final int b_deleteClaim=0x7f090048;
+        public static final int b_editClaim=0x7f090049;
+        public static final int b_viewClaim=0x7f09004a;
         public static final int beginning=0x7f09001b;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
@@ -1761,7 +1765,9 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int activity_main=0x7f030017;
         public static final int addexpense=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int claims_list_line=0x7f030019;
+        public static final int expense_list_line=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1829,6 +1835,11 @@ containing a value of this type.
         public static final int action_edit=0x7f0a0020;
         public static final int action_settings=0x7f0a0012;
         public static final int app_name=0x7f0a0010;
+        public static final int desc_edit=0x7f0a0023;
+        /**  Claim List Item 
+         */
+        public static final int desc_see=0x7f0a0022;
+        public static final int desc_trash=0x7f0a0024;
         public static final int hello_world=0x7f0a0011;
         public static final int hintCost=0x7f0a001d;
         public static final int hintCurrency=0x7f0a001f;

@@ -24,4 +24,9 @@
 	<string name="action_edit"> Edit </string>
 	<string name="action_delete"> Delete </string>
 	
+	<!-- Claim List Item -->
+	<string name="desc_see"> Look at the claim </string>
+	<string name="desc_edit"> Edit the claim </string>
+	<string name="desc_trash"> Throw away the claim </string>
+	
 </resources>

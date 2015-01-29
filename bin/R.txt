@@ -333,9 +333,10 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f02002f
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
-int drawable ic_launcher 0x7f020033
-int drawable pencil 0x7f020034
-int drawable trashcan 0x7f020035
+int drawable eye 0x7f020033
+int drawable ic_launcher 0x7f020034
+int drawable pencil 0x7f020035
+int drawable trash 0x7f020036
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f090030
@@ -351,6 +352,9 @@ int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
 int id activity_chooser_view_content 0x7f090021
 int id always 0x7f090014
+int id b_deleteClaim 0x7f090048
+int id b_editClaim 0x7f090049
+int id b_viewClaim 0x7f09004a
 int id beginning 0x7f09001b
 int id checkbox 0x7f090029
 int id collapseActionView 0x7f090015
@@ -434,7 +438,9 @@ int layout abc_search_view 0x7f030015
 int layout abc_simple_dropdown_hint 0x7f030016
 int layout activity_main 0x7f030017
 int layout addexpense 0x7f030018
-int layout support_simple_spinner_dropdown_item 0x7f030019
+int layout claims_list_line 0x7f030019
+int layout expense_list_line 0x7f03001a
+int layout support_simple_spinner_dropdown_item 0x7f03001b
 int menu main 0x7f0c0000
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_home_description_format 0x7f0a0005
@@ -456,6 +462,9 @@ int string action_delete 0x7f0a0021
 int string action_edit 0x7f0a0020
 int string action_settings 0x7f0a0012
 int string app_name 0x7f0a0010
+int string desc_edit 0x7f0a0023
+int string desc_see 0x7f0a0022
+int string desc_trash 0x7f0a0024
 int string hello_world 0x7f0a0011
 int string hintCost 0x7f0a001d
 int string hintCurrency 0x7f0a001f
