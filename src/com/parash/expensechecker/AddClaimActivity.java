@@ -54,7 +54,6 @@ public class AddClaimActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				finish();
 				return;
 			}
         });
@@ -64,6 +63,8 @@ public class AddClaimActivity extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				recieved.setStatus('P');
+				finish();
+				return;
 			}
         }); 
         
