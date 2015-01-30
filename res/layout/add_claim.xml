@@ -78,7 +78,7 @@
 	        android:layout_height="match_parent" />
 	    
 	    <EditText 
-	        android:id="@+id/range2"
+	        android:id="@+id/et_range2"
 	        android:hint="@string/hintDD"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
@@ -92,7 +92,7 @@
 	        android:layout_height="match_parent"/>
 	    
 	    <EditText
-	        android:id="@+id/range4"
+	        android:id="@+id/et_range4"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
 	        android:hint="@string/hintMM"
@@ -104,44 +104,35 @@
 	        android:text="@string/slash"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"/>
-	    
+
 	    <EditText
-	        android:id="@+id/range6"
+	        android:id="@+id/et_range6"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
+	        android:ems="10"
 	        android:hint="@string/hintYYYY"
-	        android:maxEms="4"
-	        android:inputType="numberDecimal" />
+	        android:inputType="numberDecimal"
+	        android:maxEms="4" >
+
+	        <requestFocus />
+	    </EditText>
 	   	
 	</LinearLayout>
 	
-	<TextView 
-	    android:text="@string/promptCost" 
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" />
-	
-	<EditText 
-	    android:id="@+id/et_claim_cost"
-	    android:hint="@string/hintCost"
-	    android:layout_height="match_parent"
-	    android:layout_width="match_parent"
-	   	android:inputType="numberDecimal" />
 
-	<TextView 
-	    android:text="@string/promptCurrency" 
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" />
-	
-	<EditText 
-	   	android:id="@+id/et_claim_currency"
-	    android:hint="@string/hintCurrency"
-	    android:layout_width="wrap_content"
-	    android:maxEms="3"
-	    android:layout_height="match_parent" />
 
+	<!-- The save button is for those who would like a proper exit
+		out of the editClaim screen. The screen saves everything anyways
+		when the user exits. -->
 	<Button 
 	    android:id="@+id/saveClaim"
 	    android:text="@string/save"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" />
+	
+	<Button
+	    android:id="@+id/submitClaim"
+	    android:text="@string/submit"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" />
 		
