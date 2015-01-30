@@ -11,7 +11,7 @@
 	    android:layout_height="match_parent"/>
 	
 	<EditText
-	    android:text="@+id/et_title"
+	    android:text="@+id/et_expense_title"
 	    android:hint="@string/hintTitle"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"/>
@@ -20,14 +20,8 @@
 	    android:text="@string/promptDate"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"/>
-	
-	<CheckBox
-	    android:text="@string/promptRange"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"/>
-	    
+
 	<LinearLayout
-	    android:id="@+id/date"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal" >
@@ -55,50 +49,6 @@
 	        android:layout_height="match_parent"/>
 	    
 	    <EditText
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:hint="@string/hintYYYY"
-	        android:inputType="numberDecimal" />
-	    
-	    <!-- The following 6 views were given ideas of form rangei, i element of integers.
-	    This is so they can be hidden if the Ranged? check box is unchecked -->
-	    
-	    <TextView 
-	        android:id="@+id/range1"
-	        android:paddingLeft="1dp"
-	        android:paddingRight="1dp"
-	        android:text="@string/to"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent" />
-	    
-	    <EditText 
-	        android:id="@+id/range2"
-	        android:hint="@string/hintDD"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:inputType="numberDecimal" />
-	    
-	    <TextView
-	        android:id="@+id/range3"
-	        android:text="@string/slash"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"/>
-	    
-	    <EditText
-	        android:id="@+id/range4"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:hint="@string/hintMM"
-	        android:inputType="numberDecimal" />
-	    
-	    <TextView
-	        android:id="@+id/range5"
-	        android:text="@string/slash"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"/>
-	    
-	    <EditText
-	        android:id="@+id/range6"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
 	        android:hint="@string/hintYYYY"

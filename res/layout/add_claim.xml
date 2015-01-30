@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:theme="@style/AddExpenseTheme">
+    
+	<TextView 
+	    android:text="@string/promptTitle"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"/>
+	
+	<EditText
+	    android:text="@+id/et_claim_title"
+	    android:hint="@string/hintTitle"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
+	
+	<TextView
+	    android:text="@string/promptDate"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"/>
+	
+	<CheckBox
+	    android:id="@+id/cb_ranged"
+	    android:text="@string/promptRange"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"/>
+	    
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+	    <EditText 
+	        android:id="@+id/et_claim_dd"
+	        android:hint="@string/hintDD"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:maxEms="2"
+	        android:inputType="numberDecimal" />
+	    
+	    <TextView
+	        android:text="@string/slash"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"/>
+	    
+	    <EditText
+	        android:id="@+id/et_claim_mm"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:hint="@string/hintMM"
+	        android:maxEms="2"
+	        android:inputType="numberDecimal" />
+	    
+	    <TextView
+	        android:text="@string/slash"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"/>
+	    
+	    <EditText
+	        android:id="@+id/et_claim_yyyy"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:hint="@string/hintYYYY"
+	        android:maxEms="4"
+	        android:inputType="numberDecimal" />
+	    
+	    <!-- The following 6 views were given ideas of form rangei, i element of integers.
+	    This is so they can be hidden if the Ranged? check box is unchecked -->
+	    
+	    <TextView 
+	        android:id="@+id/range1"
+	        android:paddingLeft="1dp"
+	        android:paddingRight="1dp"
+	        android:text="@string/to"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent" />
+	    
+	    <EditText 
+	        android:id="@+id/range2"
+	        android:hint="@string/hintDD"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:maxEms="2"
+	        android:inputType="numberDecimal" />
+	    
+	    <TextView
+	        android:id="@+id/range3"
+	        android:text="@string/slash"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"/>
+	    
+	    <EditText
+	        android:id="@+id/range4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:hint="@string/hintMM"
+	        android:maxEms="2"
+	        android:inputType="numberDecimal" />
+	    
+	    <TextView
+	        android:id="@+id/range5"
+	        android:text="@string/slash"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"/>
+	    
+	    <EditText
+	        android:id="@+id/range6"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:hint="@string/hintYYYY"
+	        android:maxEms="4"
+	        android:inputType="numberDecimal" />
+	   	
+	</LinearLayout>
+	
+	<TextView 
+	    android:text="@string/promptCost" 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+	
+	<EditText 
+	    android:id="@+id/et_claim_cost"
+	    android:hint="@string/hintCost"
+	    android:layout_height="match_parent"
+	    android:layout_width="match_parent"
+	   	android:inputType="numberDecimal" />
+
+	<TextView 
+	    android:text="@string/promptCurrency" 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+	
+	<EditText 
+	   	android:id="@+id/et_claim_currency"
+	    android:hint="@string/hintCurrency"
+	    android:layout_width="wrap_content"
+	    android:maxEms="3"
+	    android:layout_height="match_parent" />
+
+	<Button 
+	    android:id="@+id/saveClaim"
+	    android:text="@string/save"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" />
+		
+</LinearLayout>

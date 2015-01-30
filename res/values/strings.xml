@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-   	<!-- AddExpense -->
+   	<!-- AddClaim and AddExpense -->
 	<string name="promptTitle"> Title: </string>
 	<string name="hintTitle"> title </string>
 	<string name="promptDate"> Date: </string>
@@ -28,5 +28,12 @@
 	<string name="desc_see"> Look at the claim </string>
 	<string name="desc_edit"> Edit the claim </string>
 	<string name="desc_trash"> Throw away the claim </string>
+	
+	<!-- Main Activity -->
+	<string name="add_claim"> Add a claim </string>
+	
+	<!-- Add Claim/Expense-->
+	<string name="save"> Save </string>
+	<string name="cancel"> Cancel </string>
 	
 </resources>

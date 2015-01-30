@@ -54,10 +54,6 @@ public class Expense {
 		this.currency = currency;
 	}
 	
-	public boolean isRanged( ){
-		return false;
-	}
-	
 	public boolean costIsInt( ){
 		return ( (double)( (int) cost ) ) == cost;
 	}

@@ -1,11 +1,22 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/expenseListView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.parash.expensechecker.MainActivity" >
+	android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.parash.expensechecker.MainActivity">
+	<ListView 
+	    android:id="@+id/expenseList"
+	    android:layout_width="fill_parent"
+	    android:layout_height="450dp" >
+	     
+	</ListView>
 	
-    
-    
-</ListView>
-
+	<Button 
+	    android:id="@+id/b_add_claim"
+	    android:text="@string/add_claim"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" />
+	
+</LinearLayout>
+        

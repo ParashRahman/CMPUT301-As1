@@ -6,6 +6,12 @@ public class Date {
 	private int month;
 	private int year;
 	
+	Date (){
+		day = 0;
+		month = 0;
+		year = 0;
+	}
+	
 	Date( int day, int month, int year ){
 		super();
 		
