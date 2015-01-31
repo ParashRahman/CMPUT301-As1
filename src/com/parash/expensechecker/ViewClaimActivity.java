@@ -1,5 +1,7 @@
 package com.parash.expensechecker;
 
-public class ViewClaimActivity {
+import android.app.Activity;
 
+public class ViewClaimActivity extends Activity{
+	
 }

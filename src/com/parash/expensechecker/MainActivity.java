@@ -14,13 +14,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+// List of Claims
 public class MainActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	private Button addClaimButton;
@@ -41,16 +40,18 @@ public class MainActivity extends Activity {
 		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
 		lv_claims.setAdapter(adapter);
 		
+		
 		addClaimButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				
-				Intent i = new Intent(getApplicationContext(), AddClaimActivity.class);
+				Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
 				
 				Claim newClaim = new Claim();
 				listOfClaims.add(newClaim);
 				
-				i.putExtra("respectiveClaim", newClaim);
+				i.putExtra( "respectiveClaim", newClaim );
+				i.putExtra( "indexOfClaim", listOfClaims.size() - 1 );
 				
 				startActivity(i);
 			}
@@ -58,7 +59,30 @@ public class MainActivity extends Activity {
 		
     }
     
-    private ArrayList<Claim> loadFromFile() {
+    @Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		// checking for extras from: http://stackoverflow.com/questions/13408419/how-do-i-tell-if-intent-extras-exist-in-android		
+		boolean isNew = getIntent().getBooleanExtra("isNewItem", false);
+		
+		if ( isNew ) { // If there exists an extra
+			int dex = getIntent().getIntExtra("indexOfClaim", 0);
+			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
+			
+			listOfClaims.set(dex, replacement);
+		}
+		
+		Log.i("meMessage", Integer.toString(listOfClaims.size()));
+		for ( int i = 0; i < listOfClaims.size(); i++ ){
+			Log.i("meMessage", listOfClaims.get(i).toString());
+		}
+		
+		adapter.notifyDataSetChanged();
+	}
+
+	private ArrayList<Claim> loadFromFile() {
 		// TODO Auto-generated method stub
     	Gson gson = new Gson();
     	ArrayList<Claim> claims = null;

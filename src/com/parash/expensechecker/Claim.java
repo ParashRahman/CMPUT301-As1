@@ -3,6 +3,8 @@ package com.parash.expensechecker;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class Claim implements Serializable {
 	private String name;
 	private Date fromDate;
@@ -35,6 +37,8 @@ public class Claim implements Serializable {
 	
 	public String toString(){
 		String toRet = name + "\n";
+		
+		Log.i("meMessage", name + "sup");
 		
 		for ( int i = 0; i < list.size(); i++ ){
 			toRet += list.get(i).getCost() + " " + list.get(i).getCurrency() + "\n";

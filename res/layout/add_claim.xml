@@ -11,7 +11,7 @@
 	    android:layout_height="match_parent"/>
 	
 	<EditText
-	    android:text="@+id/et_claim_title"
+	    android:id="@+id/et_claim_title"
 	    android:hint="@string/hintTitle"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"/>
@@ -23,9 +23,9 @@
 	
 	<CheckBox
 	    android:id="@+id/cb_ranged"
-	    android:text="@string/promptRange"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"/>
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent"
+	    android:text="@string/promptRange" />
 	    
 	<LinearLayout
 	    android:layout_width="fill_parent"
@@ -109,12 +109,10 @@
 	        android:id="@+id/et_range6"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
-	        android:ems="10"
 	        android:hint="@string/hintYYYY"
 	        android:inputType="numberDecimal"
 	        android:maxEms="4" >
 
-	        <requestFocus />
 	    </EditText>
 	   	
 	</LinearLayout>
