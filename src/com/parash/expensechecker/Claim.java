@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class Claim implements Serializable {
+	private static final long serialVersionUID = -7441590390307524016L;
+	
 	private String name;
-	private Date fromDate;
-	private Date toDate;
+	private transient Date fromDate;
+	private transient Date toDate;
 	private ArrayList<Expense> list;
 	private char status;
 	

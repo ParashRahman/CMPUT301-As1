@@ -1,6 +1,9 @@
 package com.parash.expensechecker;
 
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable{
+	private static final long serialVersionUID = -7303135306614856051L;
 	
 	private int day;
 	private int month;

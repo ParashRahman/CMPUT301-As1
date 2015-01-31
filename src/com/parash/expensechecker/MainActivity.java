@@ -2,8 +2,11 @@ package com.parash.expensechecker;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -50,6 +53,9 @@ public class MainActivity extends Activity {
 				Claim newClaim = new Claim();
 				listOfClaims.add(newClaim);
 				
+				Log.i( "meMessage", Integer.toString(listOfClaims.size()) );
+
+				
 				i.putExtra( "respectiveClaim", newClaim );
 				i.putExtra( "indexOfClaim", listOfClaims.size() - 1 );
 				
@@ -63,20 +69,28 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+				
+		// checking for extras from: http://stackoverflow.com/questions/13408419/how-do-i-tell-if-intent-extras-exist-in-android	
 		
-		// checking for extras from: http://stackoverflow.com/questions/13408419/how-do-i-tell-if-intent-extras-exist-in-android		
-		boolean isNew = getIntent().getBooleanExtra("isNewItem", false);
+        listOfClaims = loadFromFile();
 		
-		if ( isNew ) { // If there exists an extra
-			int dex = getIntent().getIntExtra("indexOfClaim", 0);
-			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
-			
-			listOfClaims.set(dex, replacement);
+		boolean extrasIn = false;
+		
+		if ( getIntent().getExtras() != null ){
+			extrasIn = getIntent().getExtras().containsKey("indexOfClaim") && getIntent().getExtras().containsKey("respectiveClaim");
 		}
 		
-		Log.i("meMessage", Integer.toString(listOfClaims.size()));
-		for ( int i = 0; i < listOfClaims.size(); i++ ){
-			Log.i("meMessage", listOfClaims.get(i).toString());
+		Log.i("meMessage", Boolean.toString(extrasIn) );
+		
+		if ( extrasIn ) { // If there exists an extra
+			Log.i( "meMessage", Integer.toString(listOfClaims.size()) );
+			
+			int dex = getIntent().getIntExtra("indexOfClaim", 0);
+			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
+			listOfClaims.set(dex, replacement);
+			
+			Log.i("meMessage",replacement.toString());
+			Log.i("meMessage",Integer.toString(dex));
 		}
 		
 		adapter.notifyDataSetChanged();
@@ -90,7 +104,7 @@ public class MainActivity extends Activity {
     	try {
 			FileInputStream fis = openFileInput(FILENAME);
 			//https://sites.google.com/site/gson/gson-user-guide
-			Type dataType = new TypeToken<ArrayList<String>>() {}.getType();
+			Type dataType = new TypeToken<ArrayList<Claim>>() {}.getType();
 			InputStreamReader isr = new InputStreamReader(fis);
 			claims = gson.fromJson(isr, dataType);
 			fis.close();
@@ -106,6 +120,18 @@ public class MainActivity extends Activity {
 		return claims;
    	}
 
+	private void saveToFile() {
+		Gson gson = new Gson();
+		
+		Type dataType = new TypeToken<ArrayList<Claim>>(){}.getType();
+		try {
+			Writer osw = new OutputStreamWriter ( new FileOutputStream(FILENAME) );
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
 	protected void onPause() {
