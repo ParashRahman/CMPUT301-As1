@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Type;
@@ -120,12 +121,17 @@ public class MainActivity extends Activity {
 		return claims;
    	}
 
-	private void saveToFile() {
+	private void saveToFile() throws IOException {
 		Gson gson = new Gson();
 		
-		Type dataType = new TypeToken<ArrayList<Claim>>(){}.getType();
 		try {
-			Writer osw = new OutputStreamWriter ( new FileOutputStream(FILENAME) );
+			FileOutputStream fos = openFileOutput(FILENAME,
+					0);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			gson.toJson(listOfClaims, osw);
+			osw.flush();
+			fos.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,8 +143,12 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		
-		
+		try {
+			saveToFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}    
     
 }
