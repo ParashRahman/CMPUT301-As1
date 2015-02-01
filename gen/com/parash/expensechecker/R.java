@@ -28,31 +28,36 @@ public final class R {
         public static final int trash=0x7f020003;
     }
     public static final class id {
-        public static final int b_addExpense=0x7f080018;
+        public static final int b_addExpense=0x7f08001d;
         public static final int b_add_claim=0x7f080001;
-        public static final int b_deleteClaim=0x7f080011;
-        public static final int b_deleteExpense=0x7f080016;
-        public static final int b_editClaim=0x7f080012;
-        public static final int b_editExpense=0x7f080015;
-        public static final int b_viewClaim=0x7f080013;
+        public static final int b_deleteClaim=0x7f080016;
+        public static final int b_deleteExpense=0x7f08001b;
+        public static final int b_editClaim=0x7f080017;
+        public static final int b_editExpense=0x7f08001a;
+        public static final int b_viewClaim=0x7f080018;
         public static final int cb_ranged=0x7f080003;
         public static final int et_claim_dd=0x7f080004;
         public static final int et_claim_mm=0x7f080005;
         public static final int et_claim_title=0x7f080002;
         public static final int et_claim_yyyy=0x7f080006;
+        public static final int et_expenseCost=0x7f080013;
+        public static final int et_expenseCurrency=0x7f080014;
         public static final int et_expense_title=0x7f08000f;
+        public static final int et_expensedd=0x7f080010;
+        public static final int et_expensemm=0x7f080011;
+        public static final int et_expenseyyyy=0x7f080012;
         public static final int et_range2=0x7f080008;
         public static final int et_range4=0x7f08000a;
         public static final int et_range6=0x7f08000c;
         public static final int expenseList=0x7f080000;
-        public static final int lv_expenses=0x7f080017;
+        public static final int lv_expenses=0x7f08001c;
         public static final int range1=0x7f080007;
         public static final int range3=0x7f080009;
         public static final int range5=0x7f08000b;
         public static final int saveClaim=0x7f08000d;
         public static final int submitClaim=0x7f08000e;
-        public static final int tv_claimsList=0x7f080010;
-        public static final int tv_expenseList=0x7f080014;
+        public static final int tv_claimsList=0x7f080015;
+        public static final int tv_expenseList=0x7f080019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

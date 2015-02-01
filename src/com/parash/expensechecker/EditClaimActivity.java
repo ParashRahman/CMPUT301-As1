@@ -35,10 +35,10 @@ public class EditClaimActivity extends Activity{
 		
         setContentView(R.layout.add_claim);        
         
-        saveButton = (Button) findViewById( R.id.saveClaim );
-        submitButton = (Button) findViewById( R.id.submitClaim );
+		
         ranged = (CheckBox) findViewById(R.id.cb_ranged);
-        
+
+		
         et_title = (EditText) findViewById(R.id.et_claim_title);
         et_dd = (EditText) findViewById(R.id.et_claim_dd);
         et_mm = (EditText) findViewById(R.id.et_claim_mm);
@@ -47,7 +47,8 @@ public class EditClaimActivity extends Activity{
         et_tomm = (EditText) findViewById(R.id.et_range4);
         et_toyyyy = (EditText) findViewById(R.id.et_range6);
         
-        hideRangedDate();
+        saveButton = (Button) findViewById( R.id.saveClaim );
+        submitButton = (Button) findViewById( R.id.submitClaim );
         
         ranged.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         	// OnCheckedChangeListener brought to you by http://stackoverflow.com/questions/8386832/android-checkbox-listener
@@ -74,9 +75,24 @@ public class EditClaimActivity extends Activity{
 			}
         }); 
         
-        recieved = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 	}
 	
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+
+        
+        hideRangedDate();
+		
+        recieved = (Claim) getIntent().getSerializableExtra("respectiveClaim");
+
+		plugItOut();
+	}
+
+
+
 	private boolean hideRangedDate(){
 		if ( ! ranged.isChecked() ){
 			for ( int i = 0; i < toHide.length; i++ ){
@@ -137,7 +153,7 @@ public class EditClaimActivity extends Activity{
 				tdate.setMonth(Integer.parseInt(month) );
 				tdate.setYear( Integer.parseInt(year) );
 			}
-		}
+		} 
 				
 		recieved.setName( name );		
 		recieved.setFromDate( fdate );
@@ -150,5 +166,26 @@ public class EditClaimActivity extends Activity{
 		i.putExtra("indexOfClaim", indexToReturn);
 				
 		startActivity(i);
+	}
+	
+	private void plugItOut(){
+		et_title.setText(recieved.getName());
+		if ( recieved.getFromDate() != null ){
+			et_dd.setText( Integer.toString( recieved.getFromDate().getDate() ) );
+			et_mm.setText( Integer.toString( recieved.getFromDate().getMonth() ) );
+			et_yyyy.setText( Integer.toString( recieved.getFromDate().getYear() ) );
+		}
+		
+		if ( recieved.getToDate() != null ){
+			ranged.setChecked(true);
+			et_dd.setText( Integer.toString( recieved.getFromDate().getDate() ) );
+			et_mm.setText( Integer.toString( recieved.getFromDate().getMonth() ) );
+			et_yyyy.setText( Integer.toString( recieved.getFromDate().getYear() ) );
+		} else {
+			ranged.setChecked( false );
+		}
+		
+		
+		
 	}
 }

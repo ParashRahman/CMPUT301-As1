@@ -13,6 +13,7 @@ import android.widget.ListView;
 public class ViewClaimActivity extends Activity{
 	private ArrayList<Expense> listOfExpenses;
 	private ArrayAdapter<Expense> adapter;
+	private Claim theClaim;
 	
 	private Button addExpense;
 	private ListView lv_expenses = (ListView) findViewById(R.id.lv_expenses);
@@ -37,6 +38,9 @@ public class ViewClaimActivity extends Activity{
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+		
+		theClaim = (Claim) getIntent().getSerializableExtra("respectiveClaim");
+		listOfExpenses = theClaim.getList();
 		
 		adapter = new ArrayAdapter<Expense>(this, R.layout.expense_list_line, R.id.tv_expenseList, listOfExpenses );
 		lv_expenses.setAdapter(adapter);
