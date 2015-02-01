@@ -24,6 +24,12 @@ public class Expense implements Serializable {
 		expenseId++;
 	}
 	
+	public Expense() {
+		// TODO Auto-generated constructor stub
+		title = "";
+		currency = "";
+	}
+
 	public int getExpenseId(){
 		return expenseId;
 	}

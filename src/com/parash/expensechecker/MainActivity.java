@@ -21,12 +21,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 // List of Claims
 public class MainActivity extends Activity {
 	private static final String FILENAME = "file.sav";
+	
 	private Button addClaimButton;
+	private ImageButton editClaimButton;
+	private ImageButton viewClaimButton;
+	private ImageButton deleteClaimButton;
 	private ArrayList<Claim> listOfClaims;
 	private ArrayAdapter<Claim> adapter;
 	private ListView lv_claims;
@@ -39,12 +44,29 @@ public class MainActivity extends Activity {
         
         lv_claims = ( ListView ) findViewById(R.id.expenseList);
         addClaimButton = ( Button ) findViewById(R.id.b_add_claim);
+        editClaimButton = (ImageButton) findViewById(R.id.b_editClaim);
+        viewClaimButton = (ImageButton) findViewById(R.id.b_viewClaim);
+        deleteClaimButton = (ImageButton) findViewById(R.id.b_deleteClaim);
         
         listOfClaims = loadFromFile();
-
-		
 		
 		addClaimButton.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
+				
+				Claim newClaim = new Claim();
+				listOfClaims.add(newClaim);
+				
+				i.putExtra("respectiveClaim", newClaim);
+				i.putExtra("indexOfClaim", listOfClaims.size() - 1 );
+				
+				startActivity(i);
+			}
+		});
+		
+		editClaimButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				

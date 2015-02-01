@@ -7,12 +7,18 @@
 	<ListView 
 	    android:id="@+id/lv_expenses"
 	    android:layout_width="fill_parent"
-	    android:layout_height="450dp">
+	    android:layout_height="400dp">
 	</ListView>
 	
 	<Button 
 	    android:id="@+id/b_addExpense"
 	    android:text="@string/addExpense"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" />
+	
+	<Button
+	    android:id="@+id/b_returnClaim"
+	    android:text="@string/save"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" />
     

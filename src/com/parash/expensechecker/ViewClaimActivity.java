@@ -29,7 +29,13 @@ public class ViewClaimActivity extends Activity{
         addExpense.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), EditExpenseActivity.class);
 				
+				Expense newExpense = new Expense();
+				listOfExpenses.add(newExpense);
+				
+				i.putExtra("respectiveExpense", newExpense);
+				i.putExtra("indexOfExpense", listOfExpenses.size()-1);
 			}
 		});
 	}
