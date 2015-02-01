@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -88,6 +90,19 @@ public class MainActivity extends Activity {
 			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 			listOfClaims.set(dex, replacement);
 		}
+		Collections.sort(listOfClaims, new Comparator<Claim>() {
+	        @Override
+	        public int compare(Claim c1, Claim c2)
+	        {
+	        	if ( c1.getFromDate() == null ){
+	        		return 1;
+	        	}
+	        	if ( c2.getFromDate() == null ){
+	        		return -1;
+	        	}
+	            return  (c1.getFromDate()).compareTo(c2.getFromDate());
+	        }
+	    });
 		
 		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
 		lv_claims.setAdapter(adapter);

@@ -1,8 +1,11 @@
 package com.parash.expensechecker;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -105,6 +108,7 @@ public class EditClaimActivity extends Activity{
 		return;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void plugItIn() {
 		String name = et_title.getText().toString();
 		
@@ -115,15 +119,10 @@ public class EditClaimActivity extends Activity{
 		String month = et_mm.getText().toString();
 		String year = et_yyyy.getText().toString();
 				
-		if ( Helpers.isIntegerParsable(day) ){
-			fdate.setDay(Integer.parseInt(day));
-		}
-		
-		if ( Helpers.isIntegerParsable(month) ){
+		if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year) ){
+			Log.i("meMessage","wurked1");
+			fdate.setDate( Integer.parseInt(day) );
 			fdate.setMonth(Integer.parseInt(month) );
-		}
-		
-		if ( Helpers.isIntegerParsable(year) ){
 			fdate.setYear( Integer.parseInt(year) );
 		}
 		
@@ -132,15 +131,10 @@ public class EditClaimActivity extends Activity{
 			month = et_tomm.getText().toString();
 			year = et_toyyyy.getText().toString();
 			
-			if ( Helpers.isIntegerParsable(day) ){
-				tdate.setDay( Integer.parseInt(day) );
-			}
-			
-			if ( Helpers.isIntegerParsable(month) ){
+			if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year)){
+				Log.i("meMessage","wurked2");
+				tdate.setDate( Integer.parseInt(day) );
 				tdate.setMonth(Integer.parseInt(month) );
-			}
-			
-			if ( Helpers.isIntegerParsable(year) ){
 				tdate.setYear( Integer.parseInt(year) );
 			}
 		}

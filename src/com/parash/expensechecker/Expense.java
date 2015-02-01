@@ -1,6 +1,7 @@
 package com.parash.expensechecker;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Expense implements Serializable {
 	
