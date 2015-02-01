@@ -86,20 +86,33 @@ public class MainActivity extends Activity {
 
                     	switch (item.getItemId()) {
                         case R.id.edit_claim:
-                            Log.w("meMessage", Integer.toString(position));
-                            Toast.makeText(
-                                    MainActivity.this,
-                                    "You Clicked : " + item.getTitle(),
-                                    Toast.LENGTH_SHORT
-                                ).show();
+                        	Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
+            				
+            				Claim claim = listOfClaims.get(position);
+            				
+            				i.putExtra("respectiveClaim", claim);
+            				i.putExtra("indexOfClaim", position );
+            				
+            				startActivity(i);                      	
+                        	
                             return true;
+                        
                         case R.id.delete_claim:
-                            Log.w("meMessage", Integer.toString(position));
-
+                        	listOfClaims.remove(position);
+                        	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
+                    		lv_claims.setAdapter(adapter);
                             return true;
+                        
                         case R.id.view_claim:
-                            Log.w("meMessage", Integer.toString(position));
-
+                        	Intent intent = new Intent(getApplicationContext(), ViewClaimActivity.class);
+            				
+            				Claim newClaim = listOfClaims.get(position);
+            				
+            				intent.putExtra("respectiveClaim", newClaim);
+            				intent.putExtra("indexOfClaim", position );
+            				
+            				startActivity(intent);    
+                        	
                         	return true;
                         default:;
                         }
@@ -107,7 +120,6 @@ public class MainActivity extends Activity {
                     }
 
                 });
-                
                 
                 popup.show(); 
 		        

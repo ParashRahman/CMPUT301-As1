@@ -16,7 +16,7 @@ public class ViewClaimActivity extends Activity{
 	private Claim theClaim;
 	
 	private Button addExpense;
-	private ListView lv_expenses = (ListView) findViewById(R.id.lv_expenses);
+	private ListView lv_expenses;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class ViewClaimActivity extends Activity{
 				
         setContentView(R.layout.activity_main);
 		
+        lv_expenses = (ListView) findViewById(R.id.lv_expenses);
         addExpense = (Button) findViewById(R.id.b_addExpense);
         addExpense.setOnClickListener(new Button.OnClickListener() {
 			@Override

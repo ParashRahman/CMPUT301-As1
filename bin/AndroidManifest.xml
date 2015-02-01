@@ -24,6 +24,8 @@
         </activity>
         
         <activity android:name=".EditClaimActivity" ></activity>
+        <activity android:name=".ViewClaimActivity" ></activity>
+        
     </application>
 
 </manifest>
