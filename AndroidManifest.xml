@@ -25,6 +25,7 @@
         
         <activity android:name=".EditClaimActivity" ></activity>
         <activity android:name=".ViewClaimActivity" ></activity>
+        <activity android:name=".EditExpenseActivity" ></activity>
         
     </application>
 

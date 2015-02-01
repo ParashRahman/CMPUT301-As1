@@ -24,6 +24,8 @@ public class EditExpenseActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+        setContentView(R.layout.add_expense);
+		
 		et_title = (EditText) findViewById( R.id.et_expense_title );
 		et_dd = (EditText) findViewById( R.id.et_expensedd );
 		et_mm = (EditText) findViewById( R.id.et_expensemm );

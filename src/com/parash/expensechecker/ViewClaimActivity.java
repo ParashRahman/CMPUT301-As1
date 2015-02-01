@@ -16,6 +16,7 @@ public class ViewClaimActivity extends Activity{
 	private Claim theClaim;
 	
 	private Button addExpense;
+	private Button b_return;
 	private ListView lv_expenses;
 	
 	@Override
@@ -23,10 +24,12 @@ public class ViewClaimActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 				
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.view_claim);
 		
-        lv_expenses = (ListView) findViewById(R.id.lv_expenses);
+        lv_expenses = (ListView) findViewById( R.id.lv_expenses );
         addExpense = (Button) findViewById(R.id.b_addExpense);
+        b_return = (Button) findViewById(R.id.b_returnClaim);
+        
         addExpense.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -37,8 +40,23 @@ public class ViewClaimActivity extends Activity{
 				
 				i.putExtra("respectiveExpense", newExpense);
 				i.putExtra("indexOfExpense", listOfExpenses.size()-1);
+				
+				startActivity(i);
 			}
 		});
+        
+        b_return.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), MainActivity.class);
+				
+				i.putExtra("respectiveClaim", theClaim);
+				i.putExtra("indexOfClaim", getIntent().getIntExtra("indexOfClaim", 0));
+				
+				startActivity(i);
+			}
+		});
+        
 	}
 
 	@Override

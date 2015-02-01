@@ -36,6 +36,7 @@
 	<string name="save"> Save </string>
 	<string name="submit"> Submit </string>
 	<string name="cancel"> Cancel </string>
+	<string name="ret"> Return </string>
 	
 	<!-- View Claim -->
 	<string name="addExpense"> Add Expense </string>

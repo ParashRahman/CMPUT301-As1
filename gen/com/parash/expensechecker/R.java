@@ -81,13 +81,13 @@ public final class R {
         public static final int action_settings=0x7f050002;
         /**  View Claim 
          */
-        public static final int addExpense=0x7f050019;
+        public static final int addExpense=0x7f05001a;
         /**  Main Activity 
          */
         public static final int add_claim=0x7f050015;
         public static final int app_name=0x7f050000;
         public static final int cancel=0x7f050018;
-        public static final int dClaim=0x7f05001b;
+        public static final int dClaim=0x7f05001c;
         public static final int desc_edit=0x7f050013;
         /**  Claim List Item 
          */
@@ -95,7 +95,7 @@ public final class R {
         public static final int desc_trash=0x7f050014;
         /**  Menus 
          */
-        public static final int eClaim=0x7f05001a;
+        public static final int eClaim=0x7f05001b;
         public static final int hello_world=0x7f050001;
         public static final int hintCost=0x7f05000d;
         public static final int hintCurrency=0x7f05000f;
@@ -110,13 +110,14 @@ public final class R {
         /**  AddClaim and AddExpense 
          */
         public static final int promptTitle=0x7f050003;
+        public static final int ret=0x7f050019;
         /**  Add Claim/Expense
          */
         public static final int save=0x7f050016;
         public static final int slash=0x7f050009;
         public static final int submit=0x7f050017;
         public static final int to=0x7f05000a;
-        public static final int vClaim=0x7f05001c;
+        public static final int vClaim=0x7f05001d;
     }
     public static final class style {
         /**  The Add Expense Layout theme 
