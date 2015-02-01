@@ -40,4 +40,9 @@
 	<!-- View Claim -->
 	<string name="addExpense"> Add Expense </string>
 	
+	<!-- Menus -->
+	<string name="eClaim"> Edit Claim </string>
+	<string name="dClaim"> Delete Claim </string>
+	<string name="vClaim"> View Claim </string>
+	
 </resources>

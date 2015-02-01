@@ -18,11 +18,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 // List of Claims
 public class MainActivity extends Activity {
@@ -44,9 +48,9 @@ public class MainActivity extends Activity {
         
         lv_claims = ( ListView ) findViewById(R.id.expenseList);
         addClaimButton = ( Button ) findViewById(R.id.b_add_claim);
-        editClaimButton = (ImageButton) findViewById(R.id.b_editClaim);
-        viewClaimButton = (ImageButton) findViewById(R.id.b_viewClaim);
-        deleteClaimButton = (ImageButton) findViewById(R.id.b_deleteClaim);
+        //editClaimButton = (ImageButton) findViewById(R.id.b_editClaim);
+        //viewClaimButton = (ImageButton) findViewById(R.id.b_viewClaim);
+        //deleteClaimButton = (ImageButton) findViewById(R.id.b_deleteClaim);
         
         listOfClaims = loadFromFile();
 		
@@ -66,24 +70,55 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		editClaimButton.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
-				
-				Claim newClaim = new Claim();
-				listOfClaims.add(newClaim);
-				
-				i.putExtra("respectiveClaim", newClaim);
-				i.putExtra("indexOfClaim", listOfClaims.size() - 1 );
-				
-				startActivity(i);
-			}
+		//http://stackoverflow.com/questions/21329132/android-custom-dropdown-popup-menu
+		//http://stackoverflow.com/questions/7201159/is-using-menuitem-getitemid-valid-in-finding-which-menuitem-is-selected-by-use
+		//http://stackoverflow.com/questions/4554435/how-to-get-the-index-and-string-of-the-selected-item-in-listview-in-android
+		lv_claims.setOnItemClickListener(new AdapterView.OnItemClickListener() 
+		{
+		    public void onItemClick(AdapterView<?> parentView, View childView, final int position, long id) 
+		    {
+		    	PopupMenu popup = new PopupMenu(MainActivity.this, childView);
+                popup.getMenuInflater().inflate(R.menu.claim_popup, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                	public boolean onMenuItemClick(MenuItem item) {
+
+                    	switch (item.getItemId()) {
+                        case R.id.edit_claim:
+                            Log.w("meMessage", Integer.toString(position));
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "You Clicked : " + item.getTitle(),
+                                    Toast.LENGTH_SHORT
+                                ).show();
+                            return true;
+                        case R.id.delete_claim:
+                            Log.w("meMessage", Integer.toString(position));
+
+                            return true;
+                        case R.id.view_claim:
+                            Log.w("meMessage", Integer.toString(position));
+
+                        	return true;
+                        default:;
+                        }
+                        return true;
+                    }
+
+                });
+                
+                
+                popup.show(); 
+		        
+		    }
+		    public void onNothingSelected(AdapterView<?> parentView) 
+		    {
+		    }
 		});
 		
     }
-    
+        
     @Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
