@@ -5,9 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -41,8 +39,7 @@ public class MainActivity extends Activity {
         addClaimButton = ( Button ) findViewById(R.id.b_add_claim);
         
         listOfClaims = loadFromFile();
-		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
-		lv_claims.setAdapter(adapter);
+
 		
 		
 		addClaimButton.setOnClickListener(new Button.OnClickListener() {
@@ -54,11 +51,8 @@ public class MainActivity extends Activity {
 				Claim newClaim = new Claim();
 				listOfClaims.add(newClaim);
 				
-				Log.i( "meMessage", Integer.toString(listOfClaims.size()) );
-
-				
-				i.putExtra( "respectiveClaim", newClaim );
-				i.putExtra( "indexOfClaim", listOfClaims.size() - 1 );
+				i.putExtra("respectiveClaim", newClaim);
+				i.putExtra("indexOfClaim", listOfClaims.size() - 1 );
 				
 				startActivity(i);
 			}
@@ -67,34 +61,36 @@ public class MainActivity extends Activity {
     }
     
     @Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		
+		finish();
+		return;
+	}
+
+	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-				
 		// checking for extras from: http://stackoverflow.com/questions/13408419/how-do-i-tell-if-intent-extras-exist-in-android	
-		
         listOfClaims = loadFromFile();
-		
 		boolean extrasIn = false;
 		
 		if ( getIntent().getExtras() != null ){
 			extrasIn = getIntent().getExtras().containsKey("indexOfClaim") && getIntent().getExtras().containsKey("respectiveClaim");
-		}
+		}		
 		
-		Log.i("meMessage", Boolean.toString(extrasIn) );
+		Log.i("meMessage", Boolean.toString(extrasIn));
 		
 		if ( extrasIn ) { // If there exists an extra
-			Log.i( "meMessage", Integer.toString(listOfClaims.size()) );
-			
-			int dex = getIntent().getIntExtra("indexOfClaim", 0);
+			int dex = getIntent().getIntExtra("indexOfClaim", 0);	
 			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 			listOfClaims.set(dex, replacement);
-			
-			Log.i("meMessage",replacement.toString());
-			Log.i("meMessage",Integer.toString(dex));
 		}
 		
-		adapter.notifyDataSetChanged();
+		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
+		lv_claims.setAdapter(adapter);
 	}
 
 	private ArrayList<Claim> loadFromFile() {

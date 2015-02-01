@@ -3,7 +3,6 @@ package com.parash.expensechecker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -59,8 +58,7 @@ public class EditClaimActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				finish();
-				return;
+				plugItIn();	
 			}
         });
         
@@ -69,8 +67,7 @@ public class EditClaimActivity extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				recieved.setStatus('P');
-				finish();
-				return;
+				plugItIn();	
 			}
         }); 
         
@@ -97,9 +94,20 @@ public class EditClaimActivity extends Activity{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-				
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		
+		finish();
+		return;
+	}
+
+	private void plugItIn() {
 		String name = et_title.getText().toString();
-				
+		
 		Date fdate = new Date();
 		Date tdate = new Date();
 				
@@ -136,7 +144,7 @@ public class EditClaimActivity extends Activity{
 				tdate.setYear( Integer.parseInt(year) );
 			}
 		}
-		
+				
 		recieved.setName( name );		
 		recieved.setFromDate( fdate );
 		recieved.setToDate( tdate );
@@ -146,8 +154,7 @@ public class EditClaimActivity extends Activity{
 		int indexToReturn = getIntent().getIntExtra("indexOfClaim", 0);
 		i.putExtra("respectiveClaim", recieved);
 		i.putExtra("indexOfClaim", indexToReturn);
-		
+				
 		startActivity(i);
 	}
-	
 }

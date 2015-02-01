@@ -1,6 +1,10 @@
 package com.parash.expensechecker;
 
-public class Expense {
+import java.io.Serializable;
+
+public class Expense implements Serializable {
+	
+	private static final long serialVersionUID = -6170730513521250678L;
 	
 	private String title;
 	private Date date;
@@ -16,12 +20,13 @@ public class Expense {
 		this.date = date;
 		this.cost = cost;
 		this.currency = currency;
+		expenseId++;
 	}
 	
-	public int getExpenseId() {
+	public int getExpenseId(){
 		return expenseId;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -56,6 +61,10 @@ public class Expense {
 	
 	public boolean costIsInt( ){
 		return ( (double)( (int) cost ) ) == cost;
+	}
+	
+	public String toString(){
+		return title + " " + cost + " " + currency;
 	}
 	
 }

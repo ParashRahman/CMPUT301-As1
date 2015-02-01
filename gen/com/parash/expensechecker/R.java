@@ -28,9 +28,12 @@ public final class R {
         public static final int trash=0x7f020003;
     }
     public static final class id {
+        public static final int b_addExpense=0x7f080018;
         public static final int b_add_claim=0x7f080001;
         public static final int b_deleteClaim=0x7f080011;
+        public static final int b_deleteExpense=0x7f080016;
         public static final int b_editClaim=0x7f080012;
+        public static final int b_editExpense=0x7f080015;
         public static final int b_viewClaim=0x7f080013;
         public static final int cb_ranged=0x7f080003;
         public static final int et_claim_dd=0x7f080004;
@@ -42,12 +45,14 @@ public final class R {
         public static final int et_range4=0x7f08000a;
         public static final int et_range6=0x7f08000c;
         public static final int expenseList=0x7f080000;
+        public static final int lv_expenses=0x7f080017;
         public static final int range1=0x7f080007;
         public static final int range3=0x7f080009;
         public static final int range5=0x7f08000b;
         public static final int saveClaim=0x7f08000d;
         public static final int submitClaim=0x7f08000e;
         public static final int tv_claimsList=0x7f080010;
+        public static final int tv_expenseList=0x7f080014;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -55,6 +60,7 @@ public final class R {
         public static final int add_expense=0x7f030002;
         public static final int claims_list_line=0x7f030003;
         public static final int expense_list_line=0x7f030004;
+        public static final int view_claim=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -65,6 +71,9 @@ public final class R {
          */
         public static final int action_edit=0x7f050010;
         public static final int action_settings=0x7f050002;
+        /**  View Claim 
+         */
+        public static final int addExpense=0x7f050019;
         /**  Main Activity 
          */
         public static final int add_claim=0x7f050015;
