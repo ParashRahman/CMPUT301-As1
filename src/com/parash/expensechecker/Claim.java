@@ -65,7 +65,7 @@ public class Claim implements Serializable {
 		String toRet = "Claim: " + name + "\n" + "Status: " + status + "\n"
 				+ "Expenses: " + "\n";
 		for ( Expense e : list ){
-			toRet += e.toString();
+			toRet += e.toString() + "\n";
 		}
 		
 		return toRet;

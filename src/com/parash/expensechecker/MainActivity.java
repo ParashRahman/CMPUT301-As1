@@ -15,9 +15,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +28,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -45,6 +49,8 @@ public class MainActivity extends Activity {
 	private static int[] hideForR = { R.id.mark_approved_claim, R.id.mark_returned_claim };
 
 	protected int list_view_item_position;
+	
+	private Editable ret_string;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,8 +143,8 @@ public class MainActivity extends Activity {
                         	return true;
                         case R.id.email_claim:
                         	Intent send = new Intent(Intent.ACTION_SENDTO);
-                        	String uriText = "mailto:" + Uri.encode("email@gmail.com") + 
-                        	          "?subject=" + Uri.encode("the subject") + 
+                        	
+                        	String uriText = "mailto:" + Uri.encode("") + "?subject=" + Uri.encode("My Expense Claim") + 
                         	          "&body=" + Uri.encode(listOfClaims.get(position).claimSummary());
                         	Uri uri = Uri.parse(uriText);
 
@@ -160,6 +166,29 @@ public class MainActivity extends Activity {
 		    }
 		});
 		
+    }
+    
+    //https://stackoverflow.com/questions/8284706/send-email-via-gmail
+    //http://stackoverflow.com/questions/5771420/opening-an-input-dialog-in-android
+    private void inputBox(){
+    	final EditText input = new EditText(MainActivity.this);
+
+    	String message = "To whom do you want to send this claim to?";
+    	
+    	new AlertDialog.Builder(MainActivity.this)
+    	    .setTitle("Update Status")
+    	    .setMessage(message)
+    	    .setView(input)
+    	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    	         public void onClick(DialogInterface dialog, int whichButton) {
+    	             ret_string = input.getText(); 
+    	         }
+    	    })
+    	    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+    	         public void onClick(DialogInterface dialog, int whichButton) {
+    	                // Do nothing.
+    	         }
+    	    }).show();
     }
     
     @Override
@@ -191,15 +220,6 @@ public class MainActivity extends Activity {
     	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
 		lv_claims.setAdapter(adapter);
     }
-        
-    @Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		
-		finish();
-		return;
-	}
 
 	@Override
 	protected void onStart() {
