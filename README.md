@@ -5,3 +5,6 @@ parash@ualberta.ca
 
 VIDEO DEMO:
 https://www.youtube.com/watch?v=7_Kn-iXy77I&feature=youtu.be
+
+HELP FROM:
+(Cited in respective code segments)
