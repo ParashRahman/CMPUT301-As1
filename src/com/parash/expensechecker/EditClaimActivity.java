@@ -70,7 +70,7 @@ public class EditClaimActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				recieved.setStatus('P');
+				recieved.setStatus("Submitted");
 				plugItIn();	
 			}
         }); 

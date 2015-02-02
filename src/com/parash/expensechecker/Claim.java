@@ -7,16 +7,21 @@ import java.util.GregorianCalendar;
 public class Claim implements Serializable {
 	private static final long serialVersionUID = -7441590390307524016L;
 	
+	public static final String IN_PROGRESS = "In Progress";
+	public static final String SUBMITTED = "Submitted";
+	public static final String APPROVED = "Approved";
+	public static final String RETURNED = "Returned";
+	
 	private String name;
 	private GregorianCalendar fromDate;
 	private GregorianCalendar toDate;
 	private ArrayList<Expense> list;
-	private char status;
+	private String status;
 	
 	public Claim( ){
 		name = "";
 		list = new ArrayList<Expense>();
-		setStatus('I');
+		setStatus(IN_PROGRESS);
 	}
 	
 	public void addExpense( Expense exp ){
@@ -33,9 +38,24 @@ public class Claim implements Serializable {
 	
 	public String toString(){
 		String toRet = name + "\n";
-				
-		for ( int i = 0; i < list.size(); i++ ){
-			toRet += list.get(i).getCost() + " " + list.get(i).getCurrency() + "\n";
+		
+		ArrayList<String> currencies = new ArrayList<String>();
+		ArrayList<Double> totals = new ArrayList<Double>();
+		
+		for ( Expense e: list ){
+			if ( e.getCurrency().trim() != "" && e.getCost() != null ){
+				int index = currencies.indexOf( e.getCurrency().toUpperCase() );
+				if ( index == -1 ){
+					currencies.add(e.getCurrency().toUpperCase());
+					totals.add(e.getCost());
+				} else {
+					totals.set(index, totals.get(index) + e.getCost());
+				}
+			}
+		}
+		
+		for ( int i = 0; i < currencies.size(); i++ ){
+			toRet += totals.get(i) + " " + currencies.get(i) + "\n";
 		}
 		
 		return toRet;
@@ -65,20 +85,12 @@ public class Claim implements Serializable {
 		this.toDate = toDate;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
-		this.status = status;
+	public void setStatus(String string) {
+		this.status = string;
 	}
 	
-	/*
-	public static void main(String [] args){
-		Claim sup = new Claim("My name is john");
-		Date date1 = new Date(11, 11, 1111);
-		Expense e1 = new Expense( "Expense1", date1, 1.02, "GRE" );
-		sup.addExpense(e1);
-		System.out.println(sup.toString());
-	}*/
 }

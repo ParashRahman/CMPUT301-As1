@@ -11,4 +11,16 @@
     <item  
         android:id="@+id/view_claim"  
         android:title="@string/vClaim"/>  
+        
+   	<item 
+   	    android:id="@+id/submit_claim"
+   	    android:title="@string/submitClaim"/>
+   	
+   	<item 
+   	    android:id="@+id/mark_approved_claim"
+   	    android:title="@string/mApprovedClaim"/>
+   	
+   	<item 
+   	    android:id="@+id/mark_returned_claim"
+   	    android:title="@string/mReturnedClaim"/>
 </menu>

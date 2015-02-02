@@ -28,15 +28,15 @@ public final class R {
         public static final int trash=0x7f020003;
     }
     public static final class id {
-        public static final int b_addExpense=0x7f08001c;
+        public static final int b_addExpense=0x7f08001a;
         public static final int b_add_claim=0x7f080001;
-        public static final int b_deleteExpense=0x7f080019;
-        public static final int b_editExpense=0x7f080018;
-        public static final int b_returnClaim=0x7f08001d;
+        public static final int b_returnClaim=0x7f08001b;
         public static final int b_saveExpense=0x7f080015;
         public static final int cb_ranged=0x7f080003;
-        public static final int delete_claim=0x7f08001f;
-        public static final int edit_claim=0x7f08001e;
+        public static final int delete_claim=0x7f08001d;
+        public static final int delete_expense=0x7f080023;
+        public static final int edit_claim=0x7f08001c;
+        public static final int edit_expense=0x7f080022;
         public static final int et_claim_dd=0x7f080004;
         public static final int et_claim_mm=0x7f080005;
         public static final int et_claim_title=0x7f080002;
@@ -51,16 +51,19 @@ public final class R {
         public static final int et_range4=0x7f08000a;
         public static final int et_range6=0x7f08000c;
         public static final int expenseList=0x7f080000;
-        public static final int lv_expenses=0x7f08001b;
+        public static final int lv_expenses=0x7f080019;
+        public static final int mark_approved_claim=0x7f080020;
+        public static final int mark_returned_claim=0x7f080021;
         public static final int range1=0x7f080007;
         public static final int range3=0x7f080009;
         public static final int range5=0x7f08000b;
         public static final int saveClaim=0x7f08000d;
         public static final int submitClaim=0x7f08000e;
-        public static final int tv_claimTitle=0x7f08001a;
+        public static final int submit_claim=0x7f08001f;
+        public static final int tv_claimTitle=0x7f080018;
         public static final int tv_claimsList=0x7f080016;
         public static final int tv_expenseList=0x7f080017;
-        public static final int view_claim=0x7f080020;
+        public static final int view_claim=0x7f08001e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -72,7 +75,8 @@ public final class R {
     }
     public static final class menu {
         public static final int claim_popup=0x7f070000;
-        public static final int main=0x7f070001;
+        public static final int expense_popup=0x7f070001;
+        public static final int main=0x7f070002;
     }
     public static final class string {
         public static final int action_delete=0x7f050011;
@@ -82,21 +86,25 @@ public final class R {
         public static final int action_settings=0x7f050002;
         /**  View Claim 
          */
-        public static final int addExpense=0x7f05001a;
+        public static final int addExpense=0x7f050019;
         /**  Main Activity 
          */
         public static final int add_claim=0x7f050015;
         public static final int app_name=0x7f050000;
         public static final int cancel=0x7f050018;
-        public static final int dClaim=0x7f05001c;
+        public static final int dClaim=0x7f05001e;
+        public static final int dExpense=0x7f05001c;
         public static final int desc_edit=0x7f050013;
         /**  Claim List Item 
          */
         public static final int desc_see=0x7f050012;
         public static final int desc_trash=0x7f050014;
-        /**  Menus 
+        /**  Claim Menu 
          */
-        public static final int eClaim=0x7f05001b;
+        public static final int eClaim=0x7f05001d;
+        /**  Expense Menu 
+         */
+        public static final int eExpense=0x7f05001b;
         public static final int hello_world=0x7f050001;
         public static final int hintCost=0x7f05000d;
         public static final int hintCurrency=0x7f05000f;
@@ -104,6 +112,8 @@ public final class R {
         public static final int hintMM=0x7f050007;
         public static final int hintTitle=0x7f050004;
         public static final int hintYYYY=0x7f050008;
+        public static final int mApprovedClaim=0x7f050022;
+        public static final int mReturnedClaim=0x7f050021;
         public static final int promptCost=0x7f05000c;
         public static final int promptCurrency=0x7f05000e;
         public static final int promptDate=0x7f050005;
@@ -111,14 +121,15 @@ public final class R {
         /**  AddClaim and AddExpense 
          */
         public static final int promptTitle=0x7f050003;
-        public static final int ret=0x7f050019;
         /**  Add Claim/Expense
          */
         public static final int save=0x7f050016;
+        public static final int saveandret=0x7f05001a;
         public static final int slash=0x7f050009;
         public static final int submit=0x7f050017;
+        public static final int submitClaim=0x7f050020;
         public static final int to=0x7f05000a;
-        public static final int vClaim=0x7f05001d;
+        public static final int vClaim=0x7f05001f;
     }
     public static final class style {
         /**  The Add Expense Layout theme 

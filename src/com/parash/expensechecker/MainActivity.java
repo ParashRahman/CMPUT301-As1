@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,12 +34,15 @@ public class MainActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	
 	private Button addClaimButton;
-	private ImageButton editClaimButton;
-	private ImageButton viewClaimButton;
-	private ImageButton deleteClaimButton;
 	private ArrayList<Claim> listOfClaims;
 	private ArrayAdapter<Claim> adapter;
 	private ListView lv_claims;
+	
+	private static int[] hideForIP = {  };
+	private static int[] hideForA = {  };
+	private static int[] hideForS = {  };
+	private static int[] hideForR = {  };
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +52,6 @@ public class MainActivity extends Activity {
         
         lv_claims = ( ListView ) findViewById(R.id.expenseList);
         addClaimButton = ( Button ) findViewById(R.id.b_add_claim);
-        //editClaimButton = (ImageButton) findViewById(R.id.b_editClaim);
-        //viewClaimButton = (ImageButton) findViewById(R.id.b_viewClaim);
-        //deleteClaimButton = (ImageButton) findViewById(R.id.b_deleteClaim);
         
         listOfClaims = loadFromFile();
 		
@@ -81,14 +82,32 @@ public class MainActivity extends Activity {
                 popup.getMenuInflater().inflate(R.menu.claim_popup, popup.getMenu());
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                	
+                	public boolean onPrepareOptionsMenu(Menu menu)
+                	{
+                		String status = listOfClaims.get(position).getStatus();
 
+                		if ( status.equals(Claim.IN_PROGRESS) ){
+                			for ( int id : hideForIP ){
+                				menu.findItem(id).setVisible(false);
+                			}
+                		} else if ( status.equals(Claim.APPROVED) ){
+                			for ( int id : hideForA ){
+                				menu.findItem(id).setVisible(false);
+                			}
+                		} else if ( status.equals(Claim.SUBMITTED) ){
+                			for ( int id : hideForS ){
+                				menu.findItem(id).setVisible(false);
+                			}
+                  		} else if ( status.equals(Claim.RETURNED) ){
+                  			for ( int id : hideForR ){
+                				menu.findItem(id).setVisible(false);
+                  			}
+                  		}
+                	    return true;
+                	}
+                	
                 	public boolean onMenuItemClick(MenuItem item) {
-                		
-                		if ( listOfClaims.get(position).getFromDate() != null ){
-                			Log.i("meMessage", listOfClaims.get(position).getFromDate().toString());
-                		} else {
-                			Log.i("meMessage", "Date is NULL");
-                		}
                 		
                     	switch (item.getItemId()) {
                         case R.id.edit_claim:
@@ -105,21 +124,36 @@ public class MainActivity extends Activity {
                         
                         case R.id.delete_claim:
                         	listOfClaims.remove(position);
-                        	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
-                    		lv_claims.setAdapter(adapter);
+                        	resetAdapter();
                             return true;
                         
                         case R.id.view_claim:
                         	Intent intent = new Intent(getApplicationContext(), ViewClaimActivity.class);
             				
-            				Claim newClaim = listOfClaims.get(position);
+            				Claim claim2 = listOfClaims.get(position);
             				
-            				intent.putExtra("respectiveClaim", newClaim);
+            				intent.putExtra("respectiveClaim", claim2);
             				intent.putExtra("indexOfClaim", position );
             				
             				startActivity(intent);    
                         	
                         	return true;
+                        
+                        case R.id.submit_claim:
+                        	listOfClaims.get(position).setStatus(Claim.SUBMITTED);
+                        	resetAdapter();
+                        	return true;
+                        	
+                        case R.id.mark_approved_claim:
+                        	listOfClaims.get(position).setStatus(Claim.APPROVED);
+                        	resetAdapter();
+                        	return true;
+                        	
+                        case R.id.mark_returned_claim:
+                        	listOfClaims.get(position).setStatus(Claim.RETURNED);
+                        	resetAdapter();
+                        	return true;
+                        
                         default:;
                         }
                         return true;
@@ -135,6 +169,11 @@ public class MainActivity extends Activity {
 		    }
 		});
 		
+    }
+    
+    private void resetAdapter(){
+    	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
+		lv_claims.setAdapter(adapter);
     }
         
     @Override
@@ -180,8 +219,7 @@ public class MainActivity extends Activity {
 	        }
 	    });
 		
-		adapter = new ArrayAdapter<Claim>(this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
-		lv_claims.setAdapter(adapter);
+		resetAdapter();
 	}
 
 	private ArrayList<Claim> loadFromFile() {

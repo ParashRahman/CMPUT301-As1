@@ -36,14 +36,21 @@
 	<string name="save"> Save </string>
 	<string name="submit"> Submit </string>
 	<string name="cancel"> Cancel </string>
-	<string name="ret"> Return </string>
 	
 	<!-- View Claim -->
 	<string name="addExpense"> Add Expense </string>
+	<string name="saveandret"> Save and Return </string>
 	
-	<!-- Menus -->
+	<!-- Expense Menu -->
+	<string name="eExpense"> Edit Expense </string>
+	<string name="dExpense"> Delete Expense </string>
+	
+	<!-- Claim Menu -->
 	<string name="eClaim"> Edit Claim </string>
 	<string name="dClaim"> Delete Claim </string>
 	<string name="vClaim"> View Claim </string>
+	<string name="submitClaim"> Submit Claim </string>
+	<string name="mReturnedClaim"> Mark as Returned </string>
+	<string name="mApprovedClaim"> Mark as Approved </string>
 	
 </resources>

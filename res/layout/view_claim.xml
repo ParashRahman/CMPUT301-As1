@@ -23,7 +23,7 @@
 	
 	<Button
 	    android:id="@+id/b_returnClaim"
-	    android:text="@string/ret"
+	    android:text="@string/saveandret"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" />
     
