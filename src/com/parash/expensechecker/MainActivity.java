@@ -83,7 +83,13 @@ public class MainActivity extends Activity {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
                 	public boolean onMenuItemClick(MenuItem item) {
-
+                		
+                		if ( listOfClaims.get(position).getFromDate() != null ){
+                			Log.i("meMessage", listOfClaims.get(position).getFromDate().toString());
+                		} else {
+                			Log.i("meMessage", "Date is NULL");
+                		}
+                		
                     	switch (item.getItemId()) {
                         case R.id.edit_claim:
                         	Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
@@ -157,8 +163,14 @@ public class MainActivity extends Activity {
 		if ( extrasIn ) { // If there exists an extra
 			int dex = getIntent().getIntExtra("indexOfClaim", 0);	
 			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
+			///////////////
+			if (replacement.getFromDate() != null ){
+				Log.i("meMessage",replacement.getFromDate().toString());
+			}
+			//////////////
 			listOfClaims.set(dex, replacement);
 		}
+		
 		Collections.sort(listOfClaims, new Comparator<Claim>() {
 	        @Override
 	        public int compare(Claim c1, Claim c2)

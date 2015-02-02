@@ -40,6 +40,8 @@ public class ViewClaimActivity extends Activity{
 				
 				i.putExtra("respectiveExpense", newExpense);
 				i.putExtra("indexOfExpense", listOfExpenses.size()-1);
+				i.putExtra("respectiveClaim", theClaim);
+				i.putExtra("indexOfClaim", getIntent().getIntExtra("indexOfClaim", 0));
 				
 				startActivity(i);
 			}
@@ -57,6 +59,7 @@ public class ViewClaimActivity extends Activity{
 			}
 		});
         
+  
 	}
 
 	@Override
@@ -65,7 +68,16 @@ public class ViewClaimActivity extends Activity{
 		super.onStart();
 		
 		theClaim = (Claim) getIntent().getSerializableExtra("respectiveClaim");
-		listOfExpenses = theClaim.getList();
+		listOfExpenses = theClaim.getList(); 
+		
+		boolean expenseInExtras = getIntent().getExtras().containsKey("indexOfExpense") && getIntent().getExtras().containsKey("respectiveExpense");
+		
+		if ( expenseInExtras ){
+			int dex = getIntent().getIntExtra("indexOfExpense", 0);
+			Expense e = (Expense) getIntent().getSerializableExtra("respectiveExpense");
+			
+			listOfExpenses.add(dex, e);
+		}
 		
 		adapter = new ArrayAdapter<Expense>(this, R.layout.expense_list_line, R.id.tv_expenseList, listOfExpenses );
 		lv_expenses.setAdapter(adapter);
@@ -75,5 +87,7 @@ public class ViewClaimActivity extends Activity{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		
+		theClaim.setList(listOfExpenses);
 	}
 }

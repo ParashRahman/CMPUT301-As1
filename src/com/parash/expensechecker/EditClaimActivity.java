@@ -1,6 +1,7 @@
 package com.parash.expensechecker;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,8 +38,7 @@ public class EditClaimActivity extends Activity{
         
 		
         ranged = (CheckBox) findViewById(R.id.cb_ranged);
-
-		
+        
         et_title = (EditText) findViewById(R.id.et_claim_title);
         et_dd = (EditText) findViewById(R.id.et_claim_dd);
         et_mm = (EditText) findViewById(R.id.et_claim_mm);
@@ -54,7 +54,7 @@ public class EditClaimActivity extends Activity{
         	// OnCheckedChangeListener brought to you by http://stackoverflow.com/questions/8386832/android-checkbox-listener
             @Override
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-            	hideRangedDate();
+            	hideRangedGregorianCalendar();
             }
         });
         
@@ -84,7 +84,7 @@ public class EditClaimActivity extends Activity{
 		super.onStart();
 
         
-        hideRangedDate();
+        hideRangedGregorianCalendar();
 		
         recieved = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 
@@ -93,7 +93,7 @@ public class EditClaimActivity extends Activity{
 
 
 
-	private boolean hideRangedDate(){
+	private boolean hideRangedGregorianCalendar(){
 		if ( ! ranged.isChecked() ){
 			for ( int i = 0; i < toHide.length; i++ ){
 				View h = findViewById(toHide[i]);
@@ -124,22 +124,20 @@ public class EditClaimActivity extends Activity{
 		return;
 	}
 
-	@SuppressWarnings("deprecation")
 	private void plugItIn() {
 		String name = et_title.getText().toString();
 		
-		Date fdate = new Date();
-		Date tdate = new Date();
+		GregorianCalendar fdate = new GregorianCalendar();
+		GregorianCalendar tdate = new GregorianCalendar();
 				
 		String day = et_dd.getText().toString();
 		String month = et_mm.getText().toString();
 		String year = et_yyyy.getText().toString();
 				
 		if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year) ){
-			Log.i("meMessage","wurked1");
-			fdate.setDate( Integer.parseInt(day) );
-			fdate.setMonth(Integer.parseInt(month) );
-			fdate.setYear( Integer.parseInt(year) );
+			fdate.set( Calendar.DAY_OF_MONTH, Integer.parseInt(day) );
+			fdate.set( Calendar.MONTH, Integer.parseInt(month) - 1 );
+			fdate.set( Calendar.YEAR, Integer.parseInt(year) );
 		}
 		
 		if ( ranged.isChecked() ){
@@ -148,17 +146,16 @@ public class EditClaimActivity extends Activity{
 			year = et_toyyyy.getText().toString();
 			
 			if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year)){
-				Log.i("meMessage","wurked2");
-				tdate.setDate( Integer.parseInt(day) );
-				tdate.setMonth(Integer.parseInt(month) );
-				tdate.setYear( Integer.parseInt(year) );
+				tdate.set( Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+				tdate.set( Calendar.MONTH, Integer.parseInt(month) - 1 );
+				tdate.set( Calendar.YEAR, Integer.parseInt(year) );
 			}
 		} 
 				
 		recieved.setName( name );		
 		recieved.setFromDate( fdate );
 		recieved.setToDate( tdate );
-		
+				
 		Intent i = new Intent(getApplicationContext(), MainActivity.class);
 		
 		int indexToReturn = getIntent().getIntExtra("indexOfClaim", 0);
@@ -171,16 +168,18 @@ public class EditClaimActivity extends Activity{
 	private void plugItOut(){
 		et_title.setText(recieved.getName());
 		if ( recieved.getFromDate() != null ){
-			et_dd.setText( Integer.toString( recieved.getFromDate().getDate() ) );
-			et_mm.setText( Integer.toString( recieved.getFromDate().getMonth() ) );
-			et_yyyy.setText( Integer.toString( recieved.getFromDate().getYear() ) );
+			Log.i("meMessage","wurked1");
+			et_dd.setText( Integer.toString( recieved.getFromDate().get(Calendar.DAY_OF_MONTH) ) );
+			et_mm.setText( Integer.toString( recieved.getFromDate().get(Calendar.MONTH) + 1) );
+			et_yyyy.setText( Integer.toString( recieved.getFromDate().get(Calendar.YEAR) ) );
 		}
 		
 		if ( recieved.getToDate() != null ){
+			Log.i("meMessage","wurked2");
 			ranged.setChecked(true);
-			et_dd.setText( Integer.toString( recieved.getFromDate().getDate() ) );
-			et_mm.setText( Integer.toString( recieved.getFromDate().getMonth() ) );
-			et_yyyy.setText( Integer.toString( recieved.getFromDate().getYear() ) );
+			et_dd.setText( Integer.toString( recieved.getFromDate().get(Calendar.DAY_OF_MONTH) ) );
+			et_mm.setText( Integer.toString( recieved.getFromDate().get(Calendar.MONTH) + 1 ) );
+			et_yyyy.setText( Integer.toString( recieved.getFromDate().get(Calendar.YEAR) ) );
 		} else {
 			ranged.setChecked( false );
 		}

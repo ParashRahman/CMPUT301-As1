@@ -3,6 +3,7 @@ package com.parash.expensechecker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,11 +39,14 @@ public class EditExpenseActivity extends Activity {
 		b_save.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(), EditExpenseActivity.class);
+				Intent i = new Intent(getApplicationContext(), ViewClaimActivity.class);
 				
 				i.putExtra("respectiveExpense", recieved);
-				
 				i.putExtra("indexOfExpense", getIntent().getIntExtra("indexOfExpense", 0));
+				i.putExtra("respectiveClaim", getIntent().getSerializableExtra("respectiveClaim"));
+				i.putExtra("indexOfClaim", getIntent().getIntExtra("indexOfClaim", 0));
+				
+				startActivity(i);
 			}
 		});
 		
@@ -54,6 +58,7 @@ public class EditExpenseActivity extends Activity {
 		super.onStart();
 		
 		recieved = (Expense) getIntent().getSerializableExtra("respectiveExpense");
+		Log.i("meMessage", recieved.toString());
 	}
 	
 	@Override

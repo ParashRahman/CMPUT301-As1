@@ -2,16 +2,14 @@ package com.parash.expensechecker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-
-import android.util.Log;
+import java.util.GregorianCalendar;
 
 public class Claim implements Serializable {
 	private static final long serialVersionUID = -7441590390307524016L;
 	
 	private String name;
-	private transient Date fromDate;
-	private transient Date toDate;
+	private GregorianCalendar fromDate;
+	private GregorianCalendar toDate;
 	private ArrayList<Expense> list;
 	private char status;
 	
@@ -38,6 +36,10 @@ public class Claim implements Serializable {
 		return list;
 	}
 	
+	public void setList( ArrayList<Expense> l ){
+		list = l;
+	}
+	
 	public String toString(){
 		String toRet = name + "\n";
 				
@@ -56,19 +58,19 @@ public class Claim implements Serializable {
 		this.name = name;
 	}
 
-	public Date getFromDate() {
+	public GregorianCalendar getFromDate() {
 		return fromDate;
 	}
 	
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
+	public void setFromDate(GregorianCalendar fdate) {
+		this.fromDate = fdate;
 	}
 
-	public Date getToDate() {
+	public GregorianCalendar getToDate() {
 		return toDate;
 	}
 	
-	public void setToDate(Date toDate) {
+	public void setToDate(GregorianCalendar toDate) {
 		this.toDate = toDate;
 	}
 
