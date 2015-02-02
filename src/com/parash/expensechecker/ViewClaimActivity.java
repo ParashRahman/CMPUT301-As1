@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ViewClaimActivity extends Activity{
 	private ArrayList<Expense> listOfExpenses;
@@ -18,6 +19,7 @@ public class ViewClaimActivity extends Activity{
 	private Button addExpense;
 	private Button b_return;
 	private ListView lv_expenses;
+	private TextView tv_title;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class ViewClaimActivity extends Activity{
 				
         setContentView(R.layout.view_claim);
 		
+        tv_title = (TextView) findViewById(R.id.tv_claimTitle);
         lv_expenses = (ListView) findViewById( R.id.lv_expenses );
         addExpense = (Button) findViewById(R.id.b_addExpense);
         b_return = (Button) findViewById(R.id.b_returnClaim);
@@ -58,7 +61,6 @@ public class ViewClaimActivity extends Activity{
 				startActivity(i);
 			}
 		});
-        
   
 	}
 
@@ -69,6 +71,7 @@ public class ViewClaimActivity extends Activity{
 		
 		theClaim = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 		listOfExpenses = theClaim.getList(); 
+		tv_title.setText(theClaim.getName());
 		
 		boolean expenseInExtras = getIntent().getExtras().containsKey("indexOfExpense") && getIntent().getExtras().containsKey("respectiveExpense");
 		

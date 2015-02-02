@@ -54,7 +54,7 @@ public class EditClaimActivity extends Activity{
         	// OnCheckedChangeListener brought to you by http://stackoverflow.com/questions/8386832/android-checkbox-listener
             @Override
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-            	hideRangedGregorianCalendar();
+            	hideRangedDate();
             }
         });
         
@@ -84,7 +84,7 @@ public class EditClaimActivity extends Activity{
 		super.onStart();
 
         
-        hideRangedGregorianCalendar();
+        hideRangedDate();
 		
         recieved = (Claim) getIntent().getSerializableExtra("respectiveClaim");
 
@@ -93,7 +93,7 @@ public class EditClaimActivity extends Activity{
 
 
 
-	private boolean hideRangedGregorianCalendar(){
+	private boolean hideRangedDate(){
 		if ( ! ranged.isChecked() ){
 			for ( int i = 0; i < toHide.length; i++ ){
 				View h = findViewById(toHide[i]);
@@ -127,25 +127,28 @@ public class EditClaimActivity extends Activity{
 	private void plugItIn() {
 		String name = et_title.getText().toString();
 		
-		GregorianCalendar fdate = new GregorianCalendar();
-		GregorianCalendar tdate = new GregorianCalendar();
+		GregorianCalendar fdate = null;
+		GregorianCalendar tdate = null;
 				
 		String day = et_dd.getText().toString();
 		String month = et_mm.getText().toString();
 		String year = et_yyyy.getText().toString();
 				
 		if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year) ){
+			fdate = new GregorianCalendar();
 			fdate.set( Calendar.DAY_OF_MONTH, Integer.parseInt(day) );
 			fdate.set( Calendar.MONTH, Integer.parseInt(month) - 1 );
 			fdate.set( Calendar.YEAR, Integer.parseInt(year) );
 		}
 		
-		if ( ranged.isChecked() ){
+		if ( ranged.isChecked() ){		
 			day = et_todd.getText().toString();
 			month = et_tomm.getText().toString();
 			year = et_toyyyy.getText().toString();
 			
 			if ( Helpers.isIntegerParsable(day) && Helpers.isIntegerParsable(month) && Helpers.isIntegerParsable(year)){
+				tdate = new GregorianCalendar();
+				
 				tdate.set( Calendar.DAY_OF_MONTH, Integer.parseInt(day));
 				tdate.set( Calendar.MONTH, Integer.parseInt(month) - 1 );
 				tdate.set( Calendar.YEAR, Integer.parseInt(year) );
@@ -168,23 +171,19 @@ public class EditClaimActivity extends Activity{
 	private void plugItOut(){
 		et_title.setText(recieved.getName());
 		if ( recieved.getFromDate() != null ){
-			Log.i("meMessage","wurked1");
 			et_dd.setText( Integer.toString( recieved.getFromDate().get(Calendar.DAY_OF_MONTH) ) );
 			et_mm.setText( Integer.toString( recieved.getFromDate().get(Calendar.MONTH) + 1) );
 			et_yyyy.setText( Integer.toString( recieved.getFromDate().get(Calendar.YEAR) ) );
 		}
 		
 		if ( recieved.getToDate() != null ){
-			Log.i("meMessage","wurked2");
 			ranged.setChecked(true);
-			et_dd.setText( Integer.toString( recieved.getFromDate().get(Calendar.DAY_OF_MONTH) ) );
-			et_mm.setText( Integer.toString( recieved.getFromDate().get(Calendar.MONTH) + 1 ) );
-			et_yyyy.setText( Integer.toString( recieved.getFromDate().get(Calendar.YEAR) ) );
+			et_todd.setText( Integer.toString( recieved.getToDate().get(Calendar.DAY_OF_MONTH) ) );
+			et_tomm.setText( Integer.toString( recieved.getToDate().get(Calendar.MONTH) + 1 ) );
+			et_toyyyy.setText( Integer.toString( recieved.getToDate().get(Calendar.YEAR) ) );
 		} else {
 			ranged.setChecked( false );
 		}
-		
-		
 		
 	}
 }

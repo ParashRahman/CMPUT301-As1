@@ -163,11 +163,6 @@ public class MainActivity extends Activity {
 		if ( extrasIn ) { // If there exists an extra
 			int dex = getIntent().getIntExtra("indexOfClaim", 0);	
 			Claim replacement = (Claim) getIntent().getSerializableExtra("respectiveClaim");
-			///////////////
-			if (replacement.getFromDate() != null ){
-				Log.i("meMessage",replacement.getFromDate().toString());
-			}
-			//////////////
 			listOfClaims.set(dex, replacement);
 		}
 		

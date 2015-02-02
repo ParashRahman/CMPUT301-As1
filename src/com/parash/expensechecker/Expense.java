@@ -1,7 +1,6 @@
 package com.parash.expensechecker;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Expense implements Serializable {
@@ -11,7 +10,6 @@ public class Expense implements Serializable {
 	private GregorianCalendar date;
 	private double cost;
 	private String currency;
-	private static int expenseId = 0;
 	
 	public Expense( String title, GregorianCalendar date, double cost,
 			 String currency ){
@@ -21,17 +19,12 @@ public class Expense implements Serializable {
 		this.date = date;
 		this.cost = cost;
 		this.currency = currency;
-		expenseId++;
 	}
 	
 	public Expense() {
 		// TODO Auto-generated constructor stub
 		title = "";
 		currency = "";
-	}
-
-	public int getExpenseId(){
-		return expenseId;
 	}
 	
 	public String getTitle() {

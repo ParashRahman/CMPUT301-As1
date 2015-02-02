@@ -58,7 +58,6 @@ public class EditExpenseActivity extends Activity {
 		super.onStart();
 		
 		recieved = (Expense) getIntent().getSerializableExtra("respectiveExpense");
-		Log.i("meMessage", recieved.toString());
 	}
 	
 	@Override
