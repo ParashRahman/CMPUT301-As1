@@ -64,6 +64,7 @@ import android.widget.Toast;
 
 // List of Claims
 public class MainActivity extends Activity {
+	// file name of saved list of claims data
 	private static final String FILENAME = "file.sav";
 	
 	private Button addClaimButton;
@@ -71,6 +72,7 @@ public class MainActivity extends Activity {
 	private ArrayAdapter<Claim> adapter;
 	private ListView lv_claims;
 	
+	// following four matrices adjust the menu for each claim depending on what the claim's status is
 	private static int[] hideForIP = { R.id.mark_approved_claim, R.id.mark_returned_claim };
 	private static int[] hideForA = { R.id.edit_claim, R.id.submit_claim, R.id.mark_approved_claim, R.id.mark_returned_claim };
 	private static int[] hideForS = { R.id.edit_claim, R.id.submit_claim };
@@ -79,6 +81,7 @@ public class MainActivity extends Activity {
 	protected int list_view_item_position;
 		
     @Override
+    // A monstrous looking class only because of the Listeners.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
@@ -89,6 +92,7 @@ public class MainActivity extends Activity {
         
         listOfClaims = loadFromFile();
 		
+        // If user clicks the add claim button create an empty claim and go to the edit claim activity
 		addClaimButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -109,9 +113,11 @@ public class MainActivity extends Activity {
 		//http://stackoverflow.com/questions/7201159/is-using-menuitem-getitemid-valid-in-finding-which-menuitem-is-selected-by-use
 		//http://stackoverflow.com/questions/4554435/how-to-get-the-index-and-string-of-the-selected-item-in-listview-in-android
 		lv_claims.setOnItemClickListener(new AdapterView.OnItemClickListener() 
+		// this is the list view click listener for the list of Claims
 		{
 		    public void onItemClick(AdapterView<?> parentView, View childView, final int position, long id) 
 		    {
+		    	// A popup menu pops up to give the user options on what to do with the claim
 		    	PopupMenu popup = new PopupMenu(MainActivity.this, childView);
                 popup.getMenuInflater().inflate(R.menu.claim_popup, popup.getMenu());
                 
@@ -120,10 +126,11 @@ public class MainActivity extends Activity {
             	onPrepareOptionsMenu( popup.getMenu() );
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                	// onclicklistener for the menu
                 	public boolean onMenuItemClick(MenuItem item) {
                     	
-
                     	switch (item.getItemId()) {
+                    	// each case is for a different menu option
                         case R.id.edit_claim:
                         	Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
             				
@@ -169,7 +176,7 @@ public class MainActivity extends Activity {
                         	return true;
                         case R.id.email_claim:
                             //https://stackoverflow.com/questions/8284706/send-email-via-gmail
-
+                        	// email option puts claim info in body and lets the user fill out the rest
                         	Intent send = new Intent(Intent.ACTION_SENDTO);
                         	
                         	String uriText = "mailto:" + Uri.encode("") + "?subject=" + Uri.encode("My Expense Claim") + 
@@ -187,7 +194,7 @@ public class MainActivity extends Activity {
                 });
                 
                 popup.show(); 
-		        
+
 		    }
 		    public void onNothingSelected(AdapterView<?> parentView) 
 		    {
@@ -198,6 +205,7 @@ public class MainActivity extends Activity {
     
     
     @Override
+    // used in the popup menu in onCreate. It hides the menu options based on the claim's respective status
     public boolean onPrepareOptionsMenu(Menu menu)
 	{
 		String status = listOfClaims.get(list_view_item_position).getStatus();
@@ -222,12 +230,14 @@ public class MainActivity extends Activity {
 	    return true;
 	}
     
+    // redisplays what is on the list view. used when status of claim is changed.
     private void resetAdapter(){
     	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
 		lv_claims.setAdapter(adapter);
     }
 
 	@Override
+	// reloads all the claim from memory and checks if there was an edited claim attached that should be updated.
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
@@ -264,6 +274,7 @@ public class MainActivity extends Activity {
 		resetAdapter();
 	}
 
+	// loads all the claims from memory.
 	private ArrayList<Claim> loadFromFile() {
 		// TODO Auto-generated method stub
     	Gson gson = new Gson();
@@ -288,6 +299,7 @@ public class MainActivity extends Activity {
 		return claims;
    	}
 
+	// saves all the claims to memory
 	private void saveToFile() throws IOException {
 		Gson gson = new Gson();
 		
