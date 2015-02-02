@@ -49,9 +49,7 @@ public class MainActivity extends Activity {
 	private static int[] hideForR = { R.id.mark_approved_claim, R.id.mark_returned_claim };
 
 	protected int list_view_item_position;
-	
-	private Editable ret_string;
-	
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +140,8 @@ public class MainActivity extends Activity {
                         	resetAdapter();
                         	return true;
                         case R.id.email_claim:
+                            //https://stackoverflow.com/questions/8284706/send-email-via-gmail
+
                         	Intent send = new Intent(Intent.ACTION_SENDTO);
                         	
                         	String uriText = "mailto:" + Uri.encode("") + "?subject=" + Uri.encode("My Expense Claim") + 
@@ -168,28 +168,6 @@ public class MainActivity extends Activity {
 		
     }
     
-    //https://stackoverflow.com/questions/8284706/send-email-via-gmail
-    //http://stackoverflow.com/questions/5771420/opening-an-input-dialog-in-android
-    private void inputBox(){
-    	final EditText input = new EditText(MainActivity.this);
-
-    	String message = "To whom do you want to send this claim to?";
-    	
-    	new AlertDialog.Builder(MainActivity.this)
-    	    .setTitle("Update Status")
-    	    .setMessage(message)
-    	    .setView(input)
-    	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-    	         public void onClick(DialogInterface dialog, int whichButton) {
-    	             ret_string = input.getText(); 
-    	         }
-    	    })
-    	    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-    	         public void onClick(DialogInterface dialog, int whichButton) {
-    	                // Do nothing.
-    	         }
-    	    }).show();
-    }
     
     @Override
     public boolean onPrepareOptionsMenu(Menu menu)
