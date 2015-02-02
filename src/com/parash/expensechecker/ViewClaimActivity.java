@@ -87,6 +87,8 @@ public class ViewClaimActivity extends Activity{
             				
             				Expense expense = listOfExpenses.get(position);
             				
+            				i.putExtra("indexOfClaim", getIntent().getIntExtra("indexOfClaim", 0));
+            				i.putExtra("respectiveClaim", theClaim);
             				i.putExtra("respectiveExpense", expense);
             				i.putExtra("indexOfExpense", position );
             				
@@ -114,6 +116,7 @@ public class ViewClaimActivity extends Activity{
 		    {
 		    }
 		});
+		
   
 	}
 

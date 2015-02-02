@@ -23,4 +23,9 @@
    	<item 
    	    android:id="@+id/mark_returned_claim"
    	    android:title="@string/mReturnedClaim"/>
+   	
+   	<item 
+   	    android:id="@+id/email_claim"
+   	    android:title="@string/emailClaim"/>
+   	
 </menu>

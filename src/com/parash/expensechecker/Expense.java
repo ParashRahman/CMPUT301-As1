@@ -60,5 +60,4 @@ public class Expense implements Serializable {
 		}
 		return title + " " + getCost() + " " + currency;
 	}
-
 }

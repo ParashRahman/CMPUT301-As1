@@ -48,7 +48,6 @@ public class EditClaimActivity extends Activity{
         et_toyyyy = (EditText) findViewById(R.id.et_range6);
         
         saveButton = (Button) findViewById( R.id.saveClaim );
-        submitButton = (Button) findViewById( R.id.submitClaim );
         
         ranged.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         	// OnCheckedChangeListener brought to you by http://stackoverflow.com/questions/8386832/android-checkbox-listener
@@ -64,17 +63,8 @@ public class EditClaimActivity extends Activity{
 				// TODO Auto-generated method stub
 				plugItIn();	
 			}
-        });
-        
-        submitButton.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				recieved.setStatus("Submitted");
-				plugItIn();	
-			}
         }); 
-        
+       
 	}
 	
 	

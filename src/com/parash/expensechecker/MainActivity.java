@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,11 +39,12 @@ public class MainActivity extends Activity {
 	private ArrayAdapter<Claim> adapter;
 	private ListView lv_claims;
 	
-	private static int[] hideForIP = {  };
-	private static int[] hideForA = {  };
-	private static int[] hideForS = {  };
-	private static int[] hideForR = {  };
+	private static int[] hideForIP = { R.id.mark_approved_claim, R.id.mark_returned_claim };
+	private static int[] hideForA = { R.id.edit_claim, R.id.submit_claim, R.id.mark_approved_claim, R.id.mark_returned_claim };
+	private static int[] hideForS = { R.id.edit_claim, R.id.submit_claim };
+	private static int[] hideForR = { R.id.mark_approved_claim, R.id.mark_returned_claim };
 
+	protected int list_view_item_position;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,35 +82,15 @@ public class MainActivity extends Activity {
 		    {
 		    	PopupMenu popup = new PopupMenu(MainActivity.this, childView);
                 popup.getMenuInflater().inflate(R.menu.claim_popup, popup.getMenu());
+                
+                list_view_item_position = position;
+        	
+            	onPrepareOptionsMenu( popup.getMenu() );
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                	
-                	public boolean onPrepareOptionsMenu(Menu menu)
-                	{
-                		String status = listOfClaims.get(position).getStatus();
-
-                		if ( status.equals(Claim.IN_PROGRESS) ){
-                			for ( int id : hideForIP ){
-                				menu.findItem(id).setVisible(false);
-                			}
-                		} else if ( status.equals(Claim.APPROVED) ){
-                			for ( int id : hideForA ){
-                				menu.findItem(id).setVisible(false);
-                			}
-                		} else if ( status.equals(Claim.SUBMITTED) ){
-                			for ( int id : hideForS ){
-                				menu.findItem(id).setVisible(false);
-                			}
-                  		} else if ( status.equals(Claim.RETURNED) ){
-                  			for ( int id : hideForR ){
-                				menu.findItem(id).setVisible(false);
-                  			}
-                  		}
-                	    return true;
-                	}
-                	
                 	public boolean onMenuItemClick(MenuItem item) {
-                		
+                    	
+
                     	switch (item.getItemId()) {
                         case R.id.edit_claim:
                         	Intent i = new Intent(getApplicationContext(), EditClaimActivity.class);
@@ -153,7 +135,16 @@ public class MainActivity extends Activity {
                         	listOfClaims.get(position).setStatus(Claim.RETURNED);
                         	resetAdapter();
                         	return true;
-                        
+                        case R.id.email_claim:
+                        	Intent send = new Intent(Intent.ACTION_SENDTO);
+                        	String uriText = "mailto:" + Uri.encode("email@gmail.com") + 
+                        	          "?subject=" + Uri.encode("the subject") + 
+                        	          "&body=" + Uri.encode(listOfClaims.get(position).claimSummary());
+                        	Uri uri = Uri.parse(uriText);
+
+                        	send.setData(uri);
+                        	startActivity(Intent.createChooser(send, "Send mail..."));
+                        	return true;
                         default:;
                         }
                         return true;
@@ -170,6 +161,31 @@ public class MainActivity extends Activity {
 		});
 		
     }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu)
+	{
+		String status = listOfClaims.get(list_view_item_position).getStatus();
+
+		if ( status.equals(Claim.IN_PROGRESS) ){
+			for ( int id : hideForIP ){
+				menu.findItem(id).setVisible(false);
+			}
+		} else if ( status.equals(Claim.APPROVED) ){
+			for ( int id : hideForA ){
+				menu.findItem(id).setVisible(false);
+			}
+		} else if ( status.equals(Claim.SUBMITTED) ){
+			for ( int id : hideForS ){
+				menu.findItem(id).setVisible(false);
+			}
+  		} else if ( status.equals(Claim.RETURNED) ){
+  			for ( int id : hideForR ){
+				menu.findItem(id).setVisible(false);
+  			}
+  		}
+	    return true;
+	}
     
     private void resetAdapter(){
     	adapter = new ArrayAdapter<Claim>(MainActivity.this, R.layout.claims_list_line, R.id.tv_claimsList, listOfClaims );
@@ -191,13 +207,13 @@ public class MainActivity extends Activity {
 		super.onStart();
 		// checking for extras from: http://stackoverflow.com/questions/13408419/how-do-i-tell-if-intent-extras-exist-in-android	
         listOfClaims = loadFromFile();
+        
 		boolean extrasIn = false;
 		
 		if ( getIntent().getExtras() != null ){
 			extrasIn = getIntent().getExtras().containsKey("indexOfClaim") && getIntent().getExtras().containsKey("respectiveClaim");
 		}		
 		
-		Log.i("meMessage", Boolean.toString(extrasIn));
 		
 		if ( extrasIn ) { // If there exists an extra
 			int dex = getIntent().getIntExtra("indexOfClaim", 0);	

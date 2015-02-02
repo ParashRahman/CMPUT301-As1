@@ -37,12 +37,12 @@ public class Claim implements Serializable {
 	}
 	
 	public String toString(){
-		String toRet = name + "\n";
+		String toRet = status + "\n" + name + "\n";
 		
 		ArrayList<String> currencies = new ArrayList<String>();
 		ArrayList<Double> totals = new ArrayList<Double>();
 		
-		for ( Expense e: list ){
+		for ( Expense e : list ){
 			if ( e.getCurrency().trim() != "" && e.getCost() != null ){
 				int index = currencies.indexOf( e.getCurrency().toUpperCase() );
 				if ( index == -1 ){
@@ -60,6 +60,16 @@ public class Claim implements Serializable {
 		
 		return toRet;
 	}
+	
+	public String claimSummary(){
+		String toRet = "Claim: " + name + "\n" + "Status: " + status + "\n"
+				+ "Expenses: " + "\n";
+		for ( Expense e : list ){
+			toRet += e.toString();
+		}
+		
+		return toRet;
+	} 
 
 	public String getName() {
 		return name;

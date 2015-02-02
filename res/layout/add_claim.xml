@@ -127,11 +127,5 @@
 	    android:text="@string/save"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" />
-	
-	<Button
-	    android:id="@+id/submitClaim"
-	    android:text="@string/submit"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" />
 		
 </LinearLayout>

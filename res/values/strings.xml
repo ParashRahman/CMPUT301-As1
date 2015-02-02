@@ -52,5 +52,6 @@
 	<string name="submitClaim"> Submit Claim </string>
 	<string name="mReturnedClaim"> Mark as Returned </string>
 	<string name="mApprovedClaim"> Mark as Approved </string>
+	<string name="emailClaim"> Email Claim </string>
 	
 </resources>
