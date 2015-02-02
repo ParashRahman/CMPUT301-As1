@@ -4,35 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <!-- This layout acts as a line on the list view that holds the Claims  -->
+    
     <TextView 
         android:id="@+id/tv_expenseList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    
-<!--    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end" >
-        
-       	<ImageButton
-	        android:id="@+id/b_editExpense"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/pencil"
-	        android:background="#FFFFFF"
-	        android:paddingRight="15dp"
-	        android:contentDescription="@string/desc_edit" />
-       	
-       	<ImageButton
-	        android:id="@+id/b_deleteExpense"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/trash"
-	        android:background="#FFFFFF"
-	        android:paddingRight="15dp"
-	        android:contentDescription="@string/desc_trash" />
-        
-    </LinearLayout> -->
     
 </LinearLayout>
