@@ -55,6 +55,7 @@ public class EditClaimActivity extends Activity{
 	private EditText et_toyyyy;
 	private CheckBox ranged;
 	
+	// matrix to hide ranged date if claim is not ranged.
 	private static int[] toHide = { R.id.range1, R.id.et_range2, R.id.range3, R.id.et_range4, R.id.range5, R.id.et_range6 };
 	
 	@Override
@@ -142,6 +143,7 @@ public class EditClaimActivity extends Activity{
 		return;
 	}
 
+	// takes text xml info and plugs into claim
 	private void plugItIn() {
 		String name = et_title.getText().toString();
 		
@@ -186,6 +188,7 @@ public class EditClaimActivity extends Activity{
 		startActivity(i);
 	}
 	
+	// takes claim info and plugs into xml
 	private void plugItOut(){
 		et_title.setText(recieved.getName());
 		if ( recieved.getFromDate() != null ){
