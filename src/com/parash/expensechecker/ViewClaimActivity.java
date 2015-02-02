@@ -79,13 +79,21 @@ public class ViewClaimActivity extends Activity{
 			int dex = getIntent().getIntExtra("indexOfExpense", 0);
 			Expense e = (Expense) getIntent().getSerializableExtra("respectiveExpense");
 			
-			listOfExpenses.add(dex, e);
+			listOfExpenses.set(dex, e);
 		}
 		
 		adapter = new ArrayAdapter<Expense>(this, R.layout.expense_list_line, R.id.tv_expenseList, listOfExpenses );
 		lv_expenses.setAdapter(adapter);
 	}
 	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		finish();
+		return;
+	}
+
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub

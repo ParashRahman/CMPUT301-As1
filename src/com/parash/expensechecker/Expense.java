@@ -5,28 +5,18 @@ import java.util.GregorianCalendar;
 
 public class Expense implements Serializable {
 	private static final long serialVersionUID = -6170730513521250678L;
-	
+
 	private String title;
 	private GregorianCalendar date;
-	private double cost;
+	private Double cost;
 	private String currency;
-	
-	public Expense( String title, GregorianCalendar date, double cost,
-			 String currency ){
-		super();
-		
-		this.title = title;
-		this.date = date;
-		this.cost = cost;
-		this.currency = currency;
-	}
-	
+
 	public Expense() {
 		// TODO Auto-generated constructor stub
 		title = "";
 		currency = "";
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -43,11 +33,16 @@ public class Expense implements Serializable {
 		this.date = date;
 	}
 
-	public double getCost() {
-		return cost;
+	public Double getCost() {
+		if (cost == null) {
+			return null;
+		}
+
+		String result = String.format("%.2f", cost);
+		return Double.parseDouble(result);
 	}
 
-	public void setCost(double cost) {
+	public void setCost(Double cost) {
 		this.cost = cost;
 	}
 
@@ -58,13 +53,12 @@ public class Expense implements Serializable {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	
-	public boolean costIsInt( ){
-		return ( (double)( (int) cost ) ) == cost;
+
+	public String toString() {
+		if (getCost() == null) {
+			return title + " " + currency;
+		}
+		return title + " " + getCost() + " " + currency;
 	}
-	
-	public String toString(){
-		return title + " " + cost + " " + currency;
-	}
-	
+
 }
